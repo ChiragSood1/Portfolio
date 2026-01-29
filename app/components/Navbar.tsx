@@ -11,9 +11,9 @@ export default function Navbar() {
   return (
     <header
       style={{
-        borderBottom: "1px solid #e5e7eb",
+        borderBottom: "1px solid var(--color-border)",
         padding: "1rem 1.5rem",
-        backgroundColor: "#ffffff",
+        backgroundColor: "var(--color-bg)",
       }}
     >
       <div
@@ -25,7 +25,7 @@ export default function Navbar() {
           justifyContent: "space-between",
         }}
       >
-        <Link href="/" style={{ fontWeight: 600 }}>
+        <Link href="/" style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>
           Chirag
         </Link>
 
@@ -37,7 +37,7 @@ export default function Navbar() {
                   href={link.href}
                   style={{
                     textDecoration: "none",
-                    color: "#374151",
+                    color: "var(--color-text-secondary)",
                     fontSize: "0.95rem",
                   }}
                 >

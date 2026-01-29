@@ -4,8 +4,8 @@ export default function AboutPage() {
       <h1>About Me</h1>
 
       <p style={{ marginTop: "1rem", maxWidth: "60ch" }}>
-        I’m Chirag, a software developer interested in building clean and
-        reliable web applications. I enjoy learning how things work under
+        I’m Chirag, a Backend developer interested in building clean and
+        reliable backend applications. I enjoy learning how things work under
         the hood and improving my skills through hands-on projects.
       </p>
 
