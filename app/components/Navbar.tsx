@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const links = [
@@ -29,24 +30,33 @@ export default function Navbar() {
           Chirag
         </Link>
 
-        <nav>
-          <ul style={{ display: "flex", gap: "1.5rem", listStyle: "none" }}>
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  style={{
-                    textDecoration: "none",
-                    color: "var(--color-text-secondary)",
-                    fontSize: "0.95rem",
-                  }}
-                >
-                  {link.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "1.5rem",
+          }}
+        >
+          <nav>
+            <ul style={{ display: "flex", gap: "1.5rem", listStyle: "none" }}>
+              {links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    style={{
+                      textDecoration: "none",
+                      color: "var(--color-text-secondary)",
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
