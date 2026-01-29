@@ -19,7 +19,15 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <main>{children}</main>
+        <main
+  style={{
+    maxWidth: "960px",
+    margin: "0 auto",
+    padding: "3rem 1.5rem",
+  }}
+>
+  {children}
+</main>
         <Footer />
       </body>
     </html>
