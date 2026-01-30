@@ -1,5 +1,6 @@
 import SkillsMarquee from "./components/SkillsMarquee";
 import ProjectCard from "./components/ProjectCard";
+import HeroSection from "./components/homepage/hero-section";
 
 export default function HomePage() {
   const skills = [
@@ -44,11 +45,8 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section id="home" style={{ paddingTop: "var(--spacing-3xl)", minHeight: "90vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <h1>Hi, I'm Chirag</h1>
-        <p style={{ fontSize: "1.125rem", marginTop: "var(--spacing-lg)" }}>
-          I'm a software developer focused on building clean, reliable web applications.
-        </p>
+      <section id="home">
+        <HeroSection />
       </section>
 
       {/* About Section */}
