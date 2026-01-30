@@ -1,32 +1,48 @@
+'use client';
+
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const links = [
-    { title: "About", href: "/about" },
-    { title: "Projects", href: "/projects" },
-    { title: "Blog", href: "/blog" },
-    { title: "Photos", href: "/photos" },
+    { title: "Home", href: "#home" },
+    { title: "About", href: "#about" },
+    { title: "Skills", href: "#skills" },
+    { title: "Projects", href: "#projects" },
+    { title: "Contact", href: "#contact" },
   ];
 
   return (
     <header
       style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
         borderBottom: "1px solid var(--color-border)",
-        padding: "1rem 1.5rem",
+        padding: "var(--spacing-md) var(--spacing-lg)",
         backgroundColor: "var(--color-bg)",
+        backdropFilter: "blur(10px)",
+        backgroundImage: "linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.85))",
       }}
     >
       <div
         style={{
-          maxWidth: "960px",
+          maxWidth: "1200px",
           margin: "0 auto",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        <Link href="/" style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>
+        <Link 
+          href="#home" 
+          style={{ 
+            fontWeight: 600, 
+            color: "var(--color-text-primary)",
+            fontSize: "1.25rem",
+            fontFamily: "var(--font-sans)",
+          }}
+        >
           Chirag
         </Link>
 
@@ -34,11 +50,11 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "1.5rem",
+            gap: "var(--spacing-lg)",
           }}
         >
           <nav>
-            <ul style={{ display: "flex", gap: "1.5rem", listStyle: "none" }}>
+            <ul style={{ display: "flex", gap: "var(--spacing-lg)", listStyle: "none" }}>
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -47,6 +63,8 @@ export default function Navbar() {
                       textDecoration: "none",
                       color: "var(--color-text-secondary)",
                       fontSize: "0.95rem",
+                      fontWeight: 500,
+                      transition: "color var(--transition-fast)",
                     }}
                   >
                     {link.title}
