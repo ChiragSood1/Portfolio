@@ -66,7 +66,7 @@ html[data-theme="dark"] {
 /* Base document */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+  scroll-padding-top: 80px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -146,7 +146,96 @@ pre {
   padding: 0 var(--spacing-lg);
 }
 
-/* Scroll padding for sticky navbar */
-html {
-  scroll-padding-top: 80px;
+/* Marquee Animation for Skills */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - var(--spacing-lg)));
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  @keyframes marquee {
+    0%, 100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Button Styles */
+button,
+a[role="button"] {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 102, 255, 0.3);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+}
+
+/* Outline Button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-accent-light);
+}
+
+/* Card Styles */
+.card {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Project Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }

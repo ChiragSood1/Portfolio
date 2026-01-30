@@ -1,4 +1,46 @@
+import SkillsMarquee from "./components/SkillsMarquee";
+import ProjectCard from "./components/ProjectCard";
+
 export default function HomePage() {
+  const skills = [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "SQL",
+    "CSS",
+    "HTML",
+    "Git",
+    "Docker",
+    "AWS",
+  ];
+
+  const projects = [
+    {
+      title: "PROJECT_TITLE_1",
+      description: "PROJECT_DESCRIPTION_1",
+      technologies: ["React", "Next.js", "TypeScript"],
+      link: "PROJECT_LINK_1",
+      github: "PROJECT_GITHUB_1",
+    },
+    {
+      title: "PROJECT_TITLE_2",
+      description: "PROJECT_DESCRIPTION_2",
+      technologies: ["Node.js", "Express", "MongoDB"],
+      link: "PROJECT_LINK_2",
+      github: "PROJECT_GITHUB_2",
+    },
+    {
+      title: "PROJECT_TITLE_3",
+      description: "PROJECT_DESCRIPTION_3",
+      technologies: ["Python", "FastAPI", "PostgreSQL"],
+      link: "PROJECT_LINK_3",
+      github: "PROJECT_GITHUB_3",
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -20,17 +62,26 @@ export default function HomePage() {
       {/* Skills Section */}
       <section id="skills" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
         <h2>Skills</h2>
-        <p style={{ marginTop: "var(--spacing-lg)" }}>
-          PLACEHOLDER: Skills marquee and list will be added here.
-        </p>
+        <div style={{ marginTop: "var(--spacing-lg)" }}>
+          <SkillsMarquee skills={skills} />
+        </div>
       </section>
 
       {/* Projects Section */}
       <section id="projects" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
         <h2>Projects</h2>
-        <p style={{ marginTop: "var(--spacing-lg)" }}>
-          PLACEHOLDER: Project cards and grid will be added here.
-        </p>
+        <div className="project-grid" style={{ marginTop: "var(--spacing-lg)" }}>
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              title={project.title}
+              description={project.description}
+              technologies={project.technologies}
+              link={project.link}
+              github={project.github}
+            />
+          ))}
+        </div>
       </section>
 
       {/* Contact Section */}
