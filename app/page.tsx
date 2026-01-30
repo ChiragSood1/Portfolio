@@ -1,30 +1,45 @@
 export default function HomePage() {
   return (
-    <section
-      style={{
-        maxWidth: "960px",
-        margin: "0 auto",
-        padding: "4rem 1.5rem",
-        minHeight: "60vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <h1>Hi, I'm Chirag</h1>
+    <>
+      {/* Hero Section */}
+      <section id="home" style={{ paddingTop: "var(--spacing-3xl)", minHeight: "90vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <h1>Hi, I'm Chirag</h1>
+        <p style={{ fontSize: "1.125rem", marginTop: "var(--spacing-lg)" }}>
+          I'm a software developer focused on building clean, reliable web applications.
+        </p>
+      </section>
 
-      <div style={{ maxWidth: "65ch", marginTop: "2rem" }}>
-        <h2>
-          I'm a software developer focused on building clean, reliable web
-          applications. I enjoy working with modern web technologies and
-          continuously improving my problem-solving skills.
-        </h2>
+      {/* About Section */}
+      <section id="about" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+        <h2>About Me</h2>
+        <p style={{ marginTop: "var(--spacing-lg)" }}>
+          PLACEHOLDER: Add your about content here. This section is part of the single-page layout.
+        </p>
+      </section>
 
-        <h2 style={{ marginTop: "1.5rem", fontWeight: 400 }}>
-          This portfolio showcases my work and experiments as I grow as a
-          developer.
-        </h2>
-      </div>
-    </section>
+      {/* Skills Section */}
+      <section id="skills" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+        <h2>Skills</h2>
+        <p style={{ marginTop: "var(--spacing-lg)" }}>
+          PLACEHOLDER: Skills marquee and list will be added here.
+        </p>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+        <h2>Projects</h2>
+        <p style={{ marginTop: "var(--spacing-lg)" }}>
+          PLACEHOLDER: Project cards and grid will be added here.
+        </p>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+        <h2>Contact</h2>
+        <p style={{ marginTop: "var(--spacing-lg)" }}>
+          PLACEHOLDER: Contact form and details will be added here.
+        </p>
+      </section>
+    </>
   );
 }
