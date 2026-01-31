@@ -2,18 +2,39 @@
 
 export default function HeroSection() {
   return (
-    <div style={{ position: 'relative', overflow: 'hidden' }}>
+    <div
+      style={{
+        position: 'relative',
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+        marginLeft: 'calc(-50vw + 50%)',
+      }}
+    >
+      {/* Background with gradient and vignette */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
+
       {/* Hero Content Container */}
       <div
         style={{
           position: 'relative',
           zIndex: 10,
+          width: '100%',
+          height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          minHeight: '90vh',
-          paddingTop: 'var(--spacing-3xl)',
-          paddingBottom: 'var(--spacing-3xl)',
+          paddingLeft: 'var(--spacing-3xl)',
+          paddingRight: 'var(--spacing-3xl)',
+          boxSizing: 'border-box',
         }}
       >
         {/* Left Content */}

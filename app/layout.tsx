@@ -22,15 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className={inter.variable}>
         <Navbar />
-        <main
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "0 var(--spacing-lg)",
-          }}
-        >
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>

@@ -44,51 +44,60 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section - Full Viewport */}
       <section id="home">
         <HeroSection />
       </section>
 
-      {/* About Section */}
-      <section id="about" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-        <h2>About Me</h2>
-        <p style={{ marginTop: "var(--spacing-lg)" }}>
-          PLACEHOLDER: Add your about content here. This section is part of the single-page layout.
-        </p>
-      </section>
+      {/* Main Content Container */}
+      <main
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 var(--spacing-lg)",
+        }}
+      >
+        {/* About Section */}
+        <section id="about" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+          <h2>About Me</h2>
+          <p style={{ marginTop: "var(--spacing-lg)" }}>
+            PLACEHOLDER: Add your about content here. This section is part of the single-page layout.
+          </p>
+        </section>
 
-      {/* Skills Section */}
-      <section id="skills" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-        <h2>Skills</h2>
-        <div style={{ marginTop: "var(--spacing-lg)" }}>
-          <SkillsMarquee skills={skills} />
-        </div>
-      </section>
+        {/* Skills Section */}
+        <section id="skills" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+          <h2>Skills</h2>
+          <div style={{ marginTop: "var(--spacing-lg)" }}>
+            <SkillsMarquee skills={skills} />
+          </div>
+        </section>
 
-      {/* Projects Section */}
-      <section id="projects" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-        <h2>Projects</h2>
-        <div className="project-grid" style={{ marginTop: "var(--spacing-lg)" }}>
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              technologies={project.technologies}
-              link={project.link}
-              github={project.github}
-            />
-          ))}
-        </div>
-      </section>
+        {/* Projects Section */}
+        <section id="projects" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+          <h2>Projects</h2>
+          <div className="project-grid" style={{ marginTop: "var(--spacing-lg)" }}>
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.title}
+                title={project.title}
+                description={project.description}
+                technologies={project.technologies}
+                link={project.link}
+                github={project.github}
+              />
+            ))}
+          </div>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contact" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-        <h2>Contact</h2>
-        <p style={{ marginTop: "var(--spacing-lg)" }}>
-          PLACEHOLDER: Contact form and details will be added here.
-        </p>
-      </section>
+        {/* Contact Section */}
+        <section id="contact" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
+          <h2>Contact</h2>
+          <p style={{ marginTop: "var(--spacing-lg)" }}>
+            PLACEHOLDER: Contact form and details will be added here.
+          </p>
+        </section>
+      </main>
     </>
   );
 }
