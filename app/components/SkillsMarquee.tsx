@@ -36,7 +36,7 @@ export default function SkillsMarquee({ skills }: SkillsMarqueeProps) {
 
   const skillItems = skills.map((skill, index) => (
     <div
-      key={index}
+      key={`skill-${index}`}
       style={{
         padding: '0.5rem 1rem',
         backgroundColor: 'var(--color-bg-tertiary)',
@@ -53,8 +53,28 @@ export default function SkillsMarquee({ skills }: SkillsMarqueeProps) {
     </div>
   ));
 
-  // Duplicate skills for seamless loop
-  const duplicatedSkills = [...skillItems, ...skillItems];
+  // Duplicate skills for seamless loop with unique keys
+  const duplicatedSkills = [
+    ...skillItems,
+    ...skills.map((skill, index) => (
+      <div
+        key={`skill-duplicate-${index}`}
+        style={{
+          padding: '0.5rem 1rem',
+          backgroundColor: 'var(--color-bg-tertiary)',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid var(--color-border)',
+          fontSize: '0.875rem',
+          fontWeight: 500,
+          color: 'var(--color-text-primary)',
+          flexShrink: 0,
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {skill}
+      </div>
+    )),
+  ];
 
   return (
     <div
