@@ -11,7 +11,7 @@ export default function HeroSection() {
         marginLeft: 'calc(-50vw + 50%)',
       }}
     >
-      {/* Background with gradient and vignette */}
+      {/* Vignette Gradient Overlay */}
       <div
         style={{
           position: 'absolute',
@@ -22,183 +22,212 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Hero Content Container */}
+      {/* Hero Content Container - Two Column Layout */}
       <div
         style={{
           position: 'relative',
           zIndex: 10,
           width: '100%',
           height: '100%',
-          display: 'flex',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'var(--spacing-3xl)',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justifyItems: 'center',
           paddingLeft: 'var(--spacing-3xl)',
           paddingRight: 'var(--spacing-3xl)',
           boxSizing: 'border-box',
         }}
       >
-        {/* Left Content */}
-        <div style={{ maxWidth: '600px', flex: 1, paddingRight: 'var(--spacing-3xl)' }}>
+        {/* Left Column - Text Content */}
+        <div style={{ width: '100%', maxWidth: '600px', justifySelf: 'end', paddingRight: 'var(--spacing-2xl)' }}>
+          {/* Headline */}
           <h1
             style={{
-              fontSize: '4.5rem',
-              fontWeight: 800,
-              lineHeight: 1.1,
+              fontFamily: 'var(--font-heading), sans-serif',
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              fontWeight: 700,
+              lineHeight: 1.15,
               marginBottom: 'var(--spacing-lg)',
               color: 'var(--color-text-primary)',
-              letterSpacing: '-1px',
+              letterSpacing: '-0.03em',
             }}
           >
-            Build beautiful
-            <br />
-            experiences
+            Software developer
           </h1>
 
+          {/* Description */}
           <p
             style={{
-              fontSize: '1.25rem',
+              fontSize: '1.125rem',
               fontWeight: 400,
               color: 'var(--color-text-secondary)',
-              lineHeight: 1.8,
-              marginBottom: 'var(--spacing-2xl)',
+              lineHeight: 1.75,
+              marginBottom: 'var(--spacing-3xl)',
             }}
           >
-            I craft modern web applications with attention to detail, clean code, and thoughtful design. Let&apos;s create something remarkable together.
+            Full-stack developer building modern web experiences with React, Next.js, and thoughtful design.
           </p>
 
-          <div style={{ display: 'flex', gap: 'var(--spacing-lg)' }}>
+          {/* Social Links */}
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--spacing-lg)',
+              marginBottom: 'var(--spacing-3xl)',
+              alignItems: 'center',
+            }}
+          >
+            {['GitHub', 'Twitter', 'LinkedIn'].map((social) => (
+              <a
+                key={social}
+                href="#"
+                style={{
+                  fontSize: '0.95rem',
+                  color: 'var(--color-text-tertiary)',
+                  textDecoration: 'none',
+                  transition: 'color var(--transition-base)',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--color-accent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--color-text-tertiary)';
+                }}
+              >
+                {social}
+              </a>
+            ))}
+          </div>
+
+          {/* CTA Buttons */}
+          <div style={{ display: 'flex', gap: 'var(--spacing-md)', flexWrap: 'wrap' }}>
             <button
               style={{
-                padding: 'var(--spacing-md) var(--spacing-xl)',
+                padding: '0.75rem 1.5rem',
                 backgroundColor: 'var(--color-accent)',
                 color: '#ffffff',
                 border: 'none',
                 borderRadius: 'var(--radius-md)',
                 fontWeight: 600,
-                fontSize: '1rem',
+                fontSize: '0.95rem',
                 cursor: 'pointer',
                 transition: 'all var(--transition-base)',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 102, 255, 0.3)';
+                e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 102, 255, 0.25)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              View My Work
+              View Projects
             </button>
             <button
               style={{
-                padding: 'var(--spacing-md) var(--spacing-xl)',
+                padding: '0.75rem 1.5rem',
                 backgroundColor: 'transparent',
                 color: 'var(--color-accent)',
-                border: '2px solid var(--color-accent)',
+                border: '1.5px solid var(--color-accent)',
                 borderRadius: 'var(--radius-md)',
                 fontWeight: 600,
-                fontSize: '1rem',
+                fontSize: '0.95rem',
                 cursor: 'pointer',
                 transition: 'all var(--transition-base)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-accent-light)';
+                e.currentTarget.style.backgroundColor = 'rgba(0, 102, 255, 0.1)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              Get in Touch
+              Say Hello
             </button>
           </div>
         </div>
 
-        {/* Right Side - Animated Cube Grid */}
+        {/* Right Column - Decorative Code Panel */}
         <div
           style={{
-            position: 'relative',
-            flex: 1,
+            width: '100%',
+            height: '100%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '500px',
+            justifySelf: 'start',
+            paddingLeft: 'var(--spacing-2xl)',
           }}
         >
-          {/* Cube Grid Container */}
-          <svg
-            width="400"
-            height="400"
-            viewBox="0 0 400 400"
+          {/* Code-style panel */}
+          <div
             style={{
-              position: 'absolute',
-              opacity: 0.5,
-              animation: 'float 8s ease-in-out infinite',
+              position: 'relative',
+              width: '100%',
+              maxWidth: '500px',
+              padding: '2rem',
+              backgroundColor: 'rgba(0, 0, 0, 0.2)',
+              border: '1px solid rgba(0, 102, 255, 0.2)',
+              borderRadius: '0.75rem',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.9rem',
+              color: 'var(--color-accent)',
+              lineHeight: 1.6,
+              backdropFilter: 'blur(4px)',
+              overflow: 'hidden',
             }}
           >
-            <defs>
-              <style>
-                {`
-                  .cube-line {
-                    stroke: var(--color-accent);
-                    stroke-width: 1.5;
-                    fill: none;
-                    opacity: 0.8;
-                  }
-                `}
-              </style>
-            </defs>
+            {/* Code block content */}
+            <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+              <div style={{ color: 'rgba(0, 102, 255, 0.7)', marginBottom: '0.5rem' }}>
+                {/* Function signature */}
+                <span>const </span>
+                <span style={{ color: 'var(--color-accent)' }}>buildExperience</span>
+                <span> = () =&gt; &#123;</span>
+              </div>
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'rgba(0, 102, 255, 0.8)' }}>
+                return (
+              </div>
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.5rem' }}>
+                <span style={{ color: 'rgba(0, 102, 255, 0.7)' }}>&lt;</span>
+                <span>Developer</span>
+                <span style={{ color: 'rgba(0, 102, 255, 0.7)' }}>&gt;</span>
+              </div>
+              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'rgba(0, 102, 255, 0.6)' }}>
+                skills=&#123;['React', 'TypeScript', 'Next.js']&#125;
+              </div>
+              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'rgba(0, 102, 255, 0.6)' }}>
+                passion=&#123;true&#125;
+              </div>
+              <div style={{ paddingLeft: '4rem', marginBottom: '0.5rem', color: 'rgba(0, 102, 255, 0.6)' }}>
+                ready=&#123;true&#125;
+              </div>
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.5rem' }}>
+                <span style={{ color: 'rgba(0, 102, 255, 0.7)' }}>/&gt;</span>
+              </div>
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'rgba(0, 102, 255, 0.8)' }}>
+                )
+              </div>
+              <div style={{ color: 'rgba(0, 102, 255, 0.7)' }}>
+                <span>&#125;</span>
+              </div>
+            </div>
 
-            {/* Back cube */}
-            <g
+            {/* Cursor blink animation */}
+            <span
               style={{
-                opacity: 0.3,
-                animation: 'float-delayed 10s ease-in-out infinite',
+                display: 'inline-block',
+                width: '2px',
+                height: '1rem',
+                backgroundColor: 'var(--color-accent)',
+                marginLeft: '0.25rem',
+                animation: 'blink 1s infinite',
               }}
-            >
-              <rect x="40" y="40" width="80" height="80" className="cube-line" />
-              <line x1="40" y1="40" x2="60" y2="20" className="cube-line" />
-              <line x1="120" y1="40" x2="140" y2="20" className="cube-line" />
-              <line x1="140" y1="20" x2="60" y2="20" className="cube-line" />
-              <line x1="60" y1="20" x2="60" y2="100" className="cube-line" />
-              <line x1="140" y1="20" x2="140" y2="100" className="cube-line" />
-            </g>
-
-            {/* Middle cube - Main focus */}
-            <g
-              style={{
-                animation: 'float 6s ease-in-out infinite',
-              }}
-            >
-              <rect x="120" y="120" width="100" height="100" className="cube-line" />
-              <line x1="120" y1="120" x2="150" y2="90" className="cube-line" />
-              <line x1="220" y1="120" x2="250" y2="90" className="cube-line" />
-              <line x1="250" y1="90" x2="150" y2="90" className="cube-line" />
-              <line x1="150" y1="90" x2="150" y2="190" className="cube-line" />
-              <line x1="250" y1="90" x2="250" y2="190" className="cube-line" />
-            </g>
-
-            {/* Front cube */}
-            <g
-              style={{
-                opacity: 0.4,
-                animation: 'float-delayed-2 12s ease-in-out infinite',
-              }}
-            >
-              <rect x="200" y="200" width="90" height="90" className="cube-line" />
-              <line x1="200" y1="200" x2="225" y2="170" className="cube-line" />
-              <line x1="290" y1="200" x2="315" y2="170" className="cube-line" />
-              <line x1="315" y1="170" x2="225" y2="170" className="cube-line" />
-              <line x1="225" y1="170" x2="225" y2="260" className="cube-line" />
-              <line x1="315" y1="170" x2="315" y2="260" className="cube-line" />
-            </g>
-
-            {/* Grid background lines */}
-            <g style={{ opacity: 0.2 }}>
-              <line x1="0" y1="200" x2="400" y2="200" className="cube-line" />
-              <line x1="200" y1="0" x2="200" y2="400" className="cube-line" />
-            </g>
-          </svg>
+            />
+          </div>
         </div>
       </div>
 

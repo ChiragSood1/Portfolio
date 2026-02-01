@@ -1,7 +1,7 @@
 import "./styles/globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -12,6 +12,12 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-heading",
+});
+
 export const metadata: Metadata = {
   title: "Chirag | Software Developer",
   description: "Personal portfolio of Chirag",
@@ -20,7 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
         <Navbar />
         {children}
         <Footer />
