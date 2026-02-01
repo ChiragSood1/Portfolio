@@ -38,14 +38,15 @@ export default function SkillsMarquee({ skills }: SkillsMarqueeProps) {
     <div
       key={index}
       style={{
-        padding: 'var(--spacing-md) var(--spacing-lg)',
-        backgroundColor: 'var(--color-bg-secondary)',
+        padding: '0.5rem 1rem',
+        backgroundColor: 'var(--color-bg-tertiary)',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--color-border)',
-        fontSize: '0.95rem',
+        fontSize: '0.875rem',
         fontWeight: 500,
         color: 'var(--color-text-primary)',
         flexShrink: 0,
+        whiteSpace: 'nowrap',
       }}
     >
       {skill}
@@ -60,7 +61,7 @@ export default function SkillsMarquee({ skills }: SkillsMarqueeProps) {
       style={{
         overflow: 'hidden',
         borderRadius: 'var(--radius-lg)',
-        backgroundColor: 'var(--color-bg)',
+        backgroundColor: 'var(--color-bg-secondary)',
         border: '1px solid var(--color-border)',
         padding: 'var(--spacing-lg) 0',
       }}
@@ -72,13 +73,13 @@ export default function SkillsMarquee({ skills }: SkillsMarqueeProps) {
       </div>
       {prefersReducedMotion && (
         <p style={{
-          fontSize: '0.85rem',
+          fontSize: '0.8rem',
           color: 'var(--color-text-tertiary)',
           textAlign: 'center',
           marginTop: 'var(--spacing-md)',
           padding: '0 var(--spacing-lg)',
         }}>
-          ⚙️ Animations paused due to your system preferences
+          Motion paused per your system preferences
         </p>
       )}
     </div>

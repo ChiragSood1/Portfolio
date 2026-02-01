@@ -37,6 +37,7 @@ export default function Navbar() {
         zIndex: 1000,
         padding: "1rem 1.5rem",
         transition: "all var(--transition-base)",
+        borderBottom: `1px solid var(--color-border)`,
       }}
     >
       {/* Glassmorphic background */}
@@ -47,7 +48,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           bottom: 0,
-          backdropFilter: "blur(12px)",
+          backdropFilter: "blur(8px)",
           backgroundColor: headerBgColor,
           borderBottom: `1px solid ${borderColor}`,
           zIndex: -1,
@@ -70,11 +71,11 @@ export default function Navbar() {
         <Link 
           href="#home" 
           style={{ 
-            fontWeight: 800, 
+            fontWeight: 700, 
             color: "var(--color-text-primary)",
-            fontSize: "1.5rem",
-            fontFamily: "var(--font-sans)",
-            letterSpacing: "-0.8px",
+            fontSize: "1.125rem",
+            fontFamily: "var(--font-heading)",
+            letterSpacing: "-0.5px",
             transition: "all var(--transition-fast)",
             textDecoration: "none",
           }}
@@ -92,7 +93,7 @@ export default function Navbar() {
           }}
         >
           <nav>
-            <ul style={{ display: "flex", gap: "2.5rem", listStyle: "none" }}>
+            <ul style={{ display: "flex", gap: "2rem", listStyle: "none" }}>
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -100,11 +101,11 @@ export default function Navbar() {
                     style={{
                       textDecoration: "none",
                       color: "var(--color-text-secondary)",
-                      fontSize: "0.9rem",
+                      fontSize: "0.875rem",
                       fontWeight: 500,
-                      transition: "all var(--transition-fast)",
-                      paddingBottom: "4px",
-                      borderBottom: "2px solid transparent",
+                      transition: "color var(--transition-fast)",
+                      paddingBottom: "3px",
+                      borderBottom: "1.5px solid transparent",
                       cursor: "pointer",
                     }}
                     onMouseEnter={(e) => {

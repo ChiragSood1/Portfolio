@@ -59,24 +59,24 @@ export default function HomePage() {
       >
         {/* About Section */}
         <section id="about" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-          <h2>About Me</h2>
-          <p style={{ marginTop: "var(--spacing-lg)" }}>
+          <h2 style={{ marginBottom: "var(--spacing-xl)" }}>About Me</h2>
+          <p style={{ marginTop: 0 }}>
             PLACEHOLDER: Add your about content here. This section is part of the single-page layout.
           </p>
         </section>
 
         {/* Skills Section */}
         <section id="skills" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-          <h2>Skills</h2>
-          <div style={{ marginTop: "var(--spacing-lg)" }}>
+          <h2 style={{ marginBottom: "var(--spacing-xl)" }}>Skills</h2>
+          <div>
             <SkillsMarquee skills={skills} />
           </div>
         </section>
 
         {/* Projects Section */}
         <section id="projects" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-          <h2>Projects</h2>
-          <div className="project-grid" style={{ marginTop: "var(--spacing-lg)" }}>
+          <h2 style={{ marginBottom: "var(--spacing-xl)" }}>Projects</h2>
+          <div className="project-grid">
             {projects.map((project) => (
               <ProjectCard
                 key={project.title}
@@ -92,8 +92,8 @@ export default function HomePage() {
 
         {/* Contact Section */}
         <section id="contact" style={{ paddingTop: "var(--spacing-3xl)", paddingBottom: "var(--spacing-3xl)" }}>
-          <h2>Contact</h2>
-          <p style={{ marginTop: "var(--spacing-lg)" }}>
+          <h2 style={{ marginBottom: "var(--spacing-xl)" }}>Contact</h2>
+          <p style={{ marginTop: 0 }}>
             PLACEHOLDER: Contact form and details will be added here.
           </p>
         </section>

@@ -4,14 +4,14 @@ export default function Footer() {
       style={{
         borderTop: "1px solid var(--color-border)",
         marginTop: "6rem",
-        padding: "2rem 1.5rem",
+        padding: "3rem 1.5rem",
         textAlign: "center",
-        fontSize: "0.875rem",
+        fontSize: "0.8rem",
         color: "var(--color-text-tertiary)",
-        backgroundColor: "var(--color-bg)",
+        backgroundColor: "var(--color-bg-secondary)",
       }}
     >
-      © {new Date().getFullYear()} Chirag. All rights reserved.
+      © {new Date().getFullYear()} Chirag Sood. All rights reserved.
     </footer>
   );
 }

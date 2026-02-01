@@ -45,9 +45,9 @@ export default function HeroSection() {
           <h1
             style={{
               fontFamily: 'var(--font-heading), sans-serif',
-              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              fontSize: 'clamp(2.25rem, 5.5vw, 4.5rem)',
               fontWeight: 700,
-              lineHeight: 1.15,
+              lineHeight: 1.1,
               marginBottom: 'var(--spacing-lg)',
               color: 'var(--color-text-primary)',
               letterSpacing: '-0.03em',
@@ -59,11 +59,12 @@ export default function HeroSection() {
           {/* Description */}
           <p
             style={{
-              fontSize: '1.125rem',
+              fontSize: '1.0625rem',
               fontWeight: 400,
               color: 'var(--color-text-secondary)',
-              lineHeight: 1.75,
+              lineHeight: 1.8,
               marginBottom: 'var(--spacing-3xl)',
+              maxWidth: '550px',
             }}
           >
             Full-stack developer building modern web experiences with React, Next.js, and thoughtful design.
@@ -83,17 +84,22 @@ export default function HeroSection() {
                 key={social}
                 href="#"
                 style={{
-                  fontSize: '0.95rem',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
                   color: 'var(--color-text-tertiary)',
                   textDecoration: 'none',
-                  transition: 'color var(--transition-base)',
+                  transition: 'color var(--transition-fast)',
                   cursor: 'pointer',
+                  paddingBottom: '2px',
+                  borderBottom: '1px solid transparent',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = 'var(--color-accent)';
+                  e.currentTarget.style.borderBottomColor = 'var(--color-accent)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.color = 'var(--color-text-tertiary)';
+                  e.currentTarget.style.borderBottomColor = 'transparent';
                 }}
               >
                 {social}
@@ -105,7 +111,7 @@ export default function HeroSection() {
           <div style={{ display: 'flex', gap: 'var(--spacing-md)', flexWrap: 'wrap' }}>
             <button
               style={{
-                padding: '0.75rem 1.5rem',
+                padding: 'var(--spacing-md) var(--spacing-lg)',
                 backgroundColor: 'var(--color-accent)',
                 color: '#ffffff',
                 border: 'none',
@@ -117,7 +123,7 @@ export default function HeroSection() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 102, 255, 0.25)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-md)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -128,7 +134,7 @@ export default function HeroSection() {
             </button>
             <button
               style={{
-                padding: '0.75rem 1.5rem',
+                padding: 'var(--spacing-md) var(--spacing-lg)',
                 backgroundColor: 'transparent',
                 color: 'var(--color-accent)',
                 border: '1.5px solid var(--color-accent)',
@@ -139,10 +145,14 @@ export default function HeroSection() {
                 transition: 'all var(--transition-base)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(0, 102, 255, 0.1)';
+                e.currentTarget.style.backgroundColor = 'var(--color-accent-muted)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               Say Hello
@@ -168,50 +178,50 @@ export default function HeroSection() {
               position: 'relative',
               width: '100%',
               maxWidth: '500px',
-              padding: '2rem',
-              backgroundColor: 'rgba(0, 0, 0, 0.2)',
-              border: '1px solid rgba(0, 102, 255, 0.2)',
-              borderRadius: '0.75rem',
+              padding: 'var(--spacing-2xl)',
+              backgroundColor: 'var(--color-bg-secondary)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-lg)',
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.9rem',
+              fontSize: '0.85rem',
               color: 'var(--color-accent)',
-              lineHeight: 1.6,
+              lineHeight: 1.7,
               backdropFilter: 'blur(4px)',
               overflow: 'hidden',
             }}
           >
             {/* Code block content */}
             <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-              <div style={{ color: 'rgba(0, 102, 255, 0.7)', marginBottom: '0.5rem' }}>
+              <div style={{ color: 'var(--color-text-tertiary)', marginBottom: '0.5rem' }}>
                 {/* Function signature */}
                 <span>const </span>
                 <span style={{ color: 'var(--color-accent)' }}>buildExperience</span>
                 <span> = () =&gt; &#123;</span>
               </div>
-              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'rgba(0, 102, 255, 0.8)' }}>
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-accent)' }}>
                 return (
               </div>
               <div style={{ paddingLeft: '3rem', marginBottom: '0.5rem' }}>
-                <span style={{ color: 'rgba(0, 102, 255, 0.7)' }}>&lt;</span>
-                <span>Developer</span>
-                <span style={{ color: 'rgba(0, 102, 255, 0.7)' }}>&gt;</span>
+                <span style={{ color: 'var(--color-text-tertiary)' }}>&lt;</span>
+                <span style={{ color: 'var(--color-accent)' }}>Developer</span>
+                <span style={{ color: 'var(--color-text-tertiary)' }}>&gt;</span>
               </div>
-              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'rgba(0, 102, 255, 0.6)' }}>
+              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
                 skills=&#123;['React', 'TypeScript', 'Next.js']&#125;
               </div>
-              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'rgba(0, 102, 255, 0.6)' }}>
+              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
                 passion=&#123;true&#125;
               </div>
-              <div style={{ paddingLeft: '4rem', marginBottom: '0.5rem', color: 'rgba(0, 102, 255, 0.6)' }}>
+              <div style={{ paddingLeft: '4rem', marginBottom: '0.5rem', color: 'var(--color-text-tertiary)' }}>
                 ready=&#123;true&#125;
               </div>
               <div style={{ paddingLeft: '3rem', marginBottom: '0.5rem' }}>
-                <span style={{ color: 'rgba(0, 102, 255, 0.7)' }}>/&gt;</span>
+                <span style={{ color: 'var(--color-text-tertiary)' }}>/&gt;</span>
               </div>
-              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'rgba(0, 102, 255, 0.8)' }}>
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-accent)' }}>
                 )
               </div>
-              <div style={{ color: 'rgba(0, 102, 255, 0.7)' }}>
+              <div style={{ color: 'var(--color-text-tertiary)' }}>
                 <span>&#125;</span>
               </div>
             </div>
@@ -250,16 +260,18 @@ export default function HeroSection() {
             animation: 'bounce 2s ease-in-out infinite',
           }}
         >
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-tertiary)' }}>
+          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)', fontWeight: 500 }}>
             Scroll to explore
           </span>
           <svg
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="var(--color-accent)"
             strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>

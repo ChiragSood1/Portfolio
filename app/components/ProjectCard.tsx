@@ -20,10 +20,10 @@ export default function ProjectCard({
   return (
     <div
       style={{
-        padding: 'var(--spacing-lg)',
+        padding: 'var(--spacing-xl)',
         borderRadius: 'var(--radius-lg)',
         border: '1px solid var(--color-border)',
-        backgroundColor: 'var(--color-bg)',
+        backgroundColor: 'var(--color-bg-secondary)',
         transition: 'all var(--transition-base)',
         cursor: 'pointer',
         display: 'flex',
@@ -32,21 +32,20 @@ export default function ProjectCard({
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = 'var(--color-accent)';
-        (e.currentTarget as HTMLElement).style.boxShadow =
-          '0 12px 24px rgba(0, 0, 0, 0.1)';
-        (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+        (e.currentTarget as HTMLElement).style.boxShadow = 'var(--shadow-md)';
+        (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = 'var(--color-border)';
-        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+        (e.currentTarget as HTMLElement).style.boxShadow = 'var(--shadow-sm)';
         (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
       }}
     >
-      <h3 style={{ marginBottom: 'var(--spacing-sm)' }}>{title}</h3>
-      <p style={{ marginBottom: 'var(--spacing-md)', flex: 1 }}>{description}</p>
+      <h3 style={{ marginBottom: 'var(--spacing-md)', fontSize: '1.25rem' }}>{title}</h3>
+      <p style={{ marginBottom: 'var(--spacing-lg)', flex: 1, fontSize: '0.95rem' }}>{description}</p>
 
       {/* Technologies */}
-      <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+      <div style={{ marginBottom: 'var(--spacing-xl)' }}>
         <div
           style={{
             display: 'flex',
@@ -58,12 +57,14 @@ export default function ProjectCard({
             <span
               key={tech}
               style={{
-                padding: 'var(--spacing-xs) var(--spacing-sm)',
-                backgroundColor: 'var(--color-accent-light)',
+                padding: '0.375rem 0.75rem',
+                backgroundColor: 'var(--color-accent-muted)',
                 color: 'var(--color-accent)',
                 borderRadius: 'var(--radius-sm)',
                 fontSize: '0.8rem',
                 fontWeight: 500,
+                border: '1px solid var(--color-accent)',
+                opacity: 0.8,
               }}
             >
               {tech}
@@ -77,10 +78,11 @@ export default function ProjectCard({
         style={{
           display: 'flex',
           gap: 'var(--spacing-md)',
+          marginTop: 'auto',
         }}
       >
-        {link && <Button href={link}>View Project</Button>}
-        {github && <Button href={github} variant="outline">GitHub</Button>}
+        {link && <Button href={link} size="sm">View Project</Button>}
+        {github && <Button href={github} variant="outline" size="sm">GitHub</Button>}
       </div>
     </div>
   );
