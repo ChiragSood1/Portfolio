@@ -105,12 +105,13 @@ html {
   scroll-padding-top: 80px;
   transition: background-color 0.4s ease, color 0.4s ease;
   background-color: #fafaf8;
-  min-height: 100%;
-  background-image: 
-    var(--texture-vignette-light),
-    var(--texture-noise-light);
+  background-image: url('/bg-light.png');
   background-attachment: fixed;
-  background-size: 100% 100%, auto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
 }
 
 body {
@@ -127,11 +128,12 @@ body {
 
 html[data-theme="dark"] {
   background-color: #0a0e14;
-  background-image: 
-    var(--texture-vignette-dark),
-    var(--texture-noise-dark);
+  background-image: linear-gradient(135deg, rgba(10, 14, 20, 0.95) 0%, rgba(10, 14, 20, 0.92) 100%),
+    url('data:image/svg+xml,%3Csvg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise-dark"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="2" stitchTiles="stitch"/%3E%3CfeColorMatrix in="noise" type="saturate" values="0"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(255,255,255,0.008)" filter="url(%23noise-dark)"/%3E%3C/svg%3E');
   background-attachment: fixed;
-  background-size: 100% 100%, auto;
+  background-size: cover, auto;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
 }
 
 
