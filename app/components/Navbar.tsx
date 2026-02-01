@@ -26,8 +26,8 @@ export default function Navbar() {
     { title: "Contact", href: "#contact" },
   ];
 
-  const headerBgColor = isDark ? "rgba(10, 10, 10, 0.85)" : "rgba(255, 255, 255, 0.75)";
-  const borderColor = isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.08)";
+  const headerBgColor = isDark ? "rgba(10, 14, 20, 0.5)" : "rgba(250, 250, 248, 0.6)";
+  const borderColor = isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)";
 
   return (
     <header
@@ -40,7 +40,7 @@ export default function Navbar() {
         borderBottom: `1px solid var(--color-border)`,
       }}
     >
-      {/* Glassmorphic background */}
+      {/* Subtle backdrop with minimal blur for texture visibility */}
       <div
         style={{
           position: "absolute",
@@ -48,7 +48,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           bottom: 0,
-          backdropFilter: "blur(8px)",
+          backdropFilter: "blur(3px)",
           backgroundColor: headerBgColor,
           borderBottom: `1px solid ${borderColor}`,
           zIndex: -1,

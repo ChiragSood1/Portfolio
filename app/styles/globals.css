@@ -62,8 +62,8 @@
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
 
   /* Texture & Background */
-  --texture-noise-light: url('data:image/svg+xml,%3Csvg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise-light"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" result="noise" seed="1"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(0,0,0,0.015)" filter="url(%23noise-light)"/%3E%3C/svg%3E');
-  --texture-vignette-light: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.03) 100%);
+  --texture-noise-light: url('data:image/svg+xml,%3Csvg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise-light"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="1" stitchTiles="stitch"/%3E%3CfeColorMatrix in="noise" type="saturate" values="0"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(0,0,0,0.025)" filter="url(%23noise-light)"/%3E%3C/svg%3E');
+  --texture-vignette-light: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.04) 100%);
 }
 
 /* CSS Variables - Dark Mode */
@@ -95,8 +95,8 @@ html[data-theme="dark"] {
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
 
   /* Texture & Background - Dark Mode */
-  --texture-noise-dark: url('data:image/svg+xml,%3Csvg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise-dark"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" seed="2"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(255,255,255,0.025)" filter="url(%23noise-dark)"/%3E%3C/svg%3E');
-  --texture-vignette-dark: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
+  --texture-noise-dark: url('data:image/svg+xml,%3Csvg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise-dark"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="2" stitchTiles="stitch"/%3E%3CfeColorMatrix in="noise" type="saturate" values="0"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(255,255,255,0.04)" filter="url(%23noise-dark)"/%3E%3C/svg%3E');
+  --texture-vignette-dark: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 
 /* Base document */
