@@ -60,28 +60,32 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  /* Texture & Background */
+  --texture-noise-light: url('data:image/svg+xml,%3Csvg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise-light"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" result="noise" seed="1"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(0,0,0,0.015)" filter="url(%23noise-light)"/%3E%3C/svg%3E');
+  --texture-vignette-light: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.03) 100%);
 }
 
 /* CSS Variables - Dark Mode */
 html[data-theme="dark"] {
-  background-color: #0d1117;
-  --color-bg: #0d1117;
-  --color-bg-secondary: #161b22;
-  --color-bg-tertiary: #21262d;
+  background-color: #0a0e14;
+  --color-bg: #0a0e14;
+  --color-bg-secondary: #131820;
+  --color-bg-tertiary: #1d232f;
   --color-text-primary: #e6edf3;
   --color-text-secondary: #c9d1d9;
   --color-text-tertiary: #8b949e;
-  --color-border: #30363d;
+  --color-border: #2d333b;
   --color-accent: #58a6ff;
   --color-accent-hover: #79c0ff;
   --color-accent-light: #1f6feb;
-  --color-accent-muted: #0d1117;
+  --color-accent-muted: #0a0e14;
   --color-success: #3fb950;
   --color-warning: #d29922;
   --color-error: #ff7b72;
 
   /* Dark mode glassmorphism */
-  --glass-bg: rgba(13, 17, 23, 0.9);
+  --glass-bg: rgba(10, 14, 20, 0.9);
   --glass-blur: blur(12px);
   
   /* Shadows - softer for dark mode */
@@ -89,6 +93,10 @@ html[data-theme="dark"] {
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
+
+  /* Texture & Background - Dark Mode */
+  --texture-noise-dark: url('data:image/svg+xml,%3Csvg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise-dark"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" seed="2"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(255,255,255,0.025)" filter="url(%23noise-dark)"/%3E%3C/svg%3E');
+  --texture-vignette-dark: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
 }
 
 /* Base document */
@@ -96,13 +104,18 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
   transition: background-color 0.4s ease, color 0.4s ease;
-  background-color: #ffffff;
+  background-color: #fafaf8;
   min-height: 100%;
+  background-image: 
+    var(--texture-vignette-light),
+    var(--texture-noise-light);
+  background-attachment: fixed;
+  background-size: 100% 100%, auto;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-bg);
+  background-color: transparent;
   color: var(--color-text-primary);
   line-height: 1.6;
   font-weight: 400;
@@ -112,18 +125,16 @@ body {
   position: relative;
 }
 
-/* Grain/Noise texture overlay */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" fill="rgba(255,255,255,0.03)" filter="url(%23noise)"/%3E%3C/svg%3E');
-  background-repeat: repeat;
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 0;
-  mix-blend-mode: overlay;
+html[data-theme="dark"] {
+  background-color: #0a0e14;
+  background-image: 
+    var(--texture-vignette-dark),
+    var(--texture-noise-dark);
+  background-attachment: fixed;
+  background-size: 100% 100%, auto;
 }
+
+
 
 
 /* Headings */
