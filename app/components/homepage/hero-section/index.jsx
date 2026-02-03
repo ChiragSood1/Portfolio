@@ -31,250 +31,323 @@ export default function HeroSection() {
           height: '100%',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: 'var(--spacing-3xl)',
+          gap: '4rem',
           alignItems: 'center',
-          justifyItems: 'center',
-          paddingLeft: 'var(--spacing-3xl)',
-          paddingRight: 'var(--spacing-3xl)',
+          paddingLeft: '6rem',
+          paddingRight: '6rem',
           boxSizing: 'border-box',
         }}
       >
         {/* Left Column - Text Content */}
-        <div style={{ width: '100%', maxWidth: '600px', justifySelf: 'end', paddingRight: 'var(--spacing-2xl)' }}>
-          {/* Headline */}
-          <h1
-            style={{
-              fontFamily: 'var(--font-heading), sans-serif',
-              fontSize: 'clamp(2.25rem, 5.5vw, 4.5rem)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              marginBottom: 'var(--spacing-lg)',
-              color: 'var(--color-text-primary)',
-              letterSpacing: '-0.03em',
-            }}
-          >
-            Software developer
-          </h1>
+        <div style={{ width: '100%', justifySelf: 'start' }}>
+          {/* Main Headline */}
+          <div style={{ marginBottom: '2rem' }}>
+            <h1
+              style={{
+                fontFamily: 'var(--font-heading), sans-serif',
+                fontSize: '3.5rem',
+                fontWeight: 800,
+                lineHeight: 1.2,
+                marginBottom: '0.5rem',
+                color: 'var(--color-text-primary)',
+                letterSpacing: '-0.03em',
+              }}
+            >
+              Hello,
+            </h1>
+            <h1
+              style={{
+                fontFamily: 'var(--font-heading), sans-serif',
+                fontSize: '3.5rem',
+                fontWeight: 800,
+                lineHeight: 1.2,
+                marginBottom: '0.5rem',
+                color: 'var(--color-text-primary)',
+                letterSpacing: '-0.03em',
+              }}
+            >
+              This is <span style={{ color: 'var(--color-accent)' }}>Chirag Sood</span> ,
+            </h1>
+            <h1
+              style={{
+                fontFamily: 'var(--font-heading), sans-serif',
+                fontSize: '3.5rem',
+                fontWeight: 800,
+                lineHeight: 1.2,
+                color: 'var(--color-text-primary)',
+                letterSpacing: '-0.03em',
+              }}
+            >
+              I'm a <span style={{ color: 'var(--color-accent)' }}>Software Engineer</span>.
+            </h1>
+          </div>
 
-          {/* Description */}
-          <p
-            style={{
-              fontSize: '1.0625rem',
-              fontWeight: 400,
-              color: 'var(--color-text-secondary)',
-              lineHeight: 1.8,
-              marginBottom: 'var(--spacing-3xl)',
-              maxWidth: '550px',
-            }}
-          >
-            Full-stack developer building modern web experiences with React, Next.js, and thoughtful design.
-          </p>
-
-          {/* Social Links */}
+          {/* Social Links as Icons */}
           <div
             style={{
               display: 'flex',
-              gap: 'var(--spacing-lg)',
-              marginBottom: 'var(--spacing-3xl)',
+              gap: '1.5rem',
+              marginBottom: '3rem',
               alignItems: 'center',
             }}
           >
-            {['GitHub', 'Twitter', 'LinkedIn'].map((social) => (
+            {[
+              { name: 'GitHub', icon: '⚙️', url: '#' },
+              { name: 'LinkedIn', icon: '💼', url: '#' },
+              { name: 'Twitter', icon: '𝕏', url: '#' },
+              { name: 'Mail', icon: '✉️', url: '#' },
+              { name: 'Portfolio', icon: '📁', url: '#' },
+            ].map((social) => (
               <a
-                key={social}
-                href="#"
+                key={social.name}
+                href={social.url}
                 style={{
-                  fontSize: '0.9rem',
-                  fontWeight: 500,
-                  color: 'var(--color-text-tertiary)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '2.5rem',
+                  height: '2.5rem',
+                  borderRadius: '50%',
+                  border: '2px solid var(--color-accent)',
+                  fontSize: '1.25rem',
+                  color: 'var(--color-accent)',
                   textDecoration: 'none',
-                  transition: 'color var(--transition-fast)',
+                  transition: 'all var(--transition-base)',
                   cursor: 'pointer',
-                  paddingBottom: '2px',
-                  borderBottom: '1px solid transparent',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--color-accent)';
-                  e.currentTarget.style.borderBottomColor = 'var(--color-accent)';
+                  e.currentTarget.style.backgroundColor = 'var(--color-accent)';
+                  e.currentTarget.style.color = 'var(--color-bg)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--color-text-tertiary)';
-                  e.currentTarget.style.borderBottomColor = 'transparent';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--color-accent)';
+                  e.currentTarget.style.transform = 'translateY(0)';
                 }}
+                title={social.name}
               >
-                {social}
+                {social.icon}
               </a>
             ))}
           </div>
 
           {/* CTA Buttons */}
-          <div style={{ display: 'flex', gap: 'var(--spacing-md)', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
             <button
               style={{
-                padding: 'var(--spacing-md) var(--spacing-lg)',
-                backgroundColor: 'var(--color-accent)',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: 'var(--radius-md)',
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                cursor: 'pointer',
-                transition: 'all var(--transition-base)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              View Projects
-            </button>
-            <button
-              style={{
-                padding: 'var(--spacing-md) var(--spacing-lg)',
+                padding: '0.875rem 2rem',
                 backgroundColor: 'transparent',
                 color: 'var(--color-accent)',
-                border: '1.5px solid var(--color-accent)',
-                borderRadius: 'var(--radius-md)',
+                border: '2px solid var(--color-accent)',
+                borderRadius: '2rem',
                 fontWeight: 600,
-                fontSize: '0.95rem',
+                fontSize: '1rem',
                 cursor: 'pointer',
                 transition: 'all var(--transition-base)',
+                fontFamily: 'var(--font-sans)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-accent-muted)';
+                e.currentTarget.style.backgroundColor = 'var(--color-accent)';
+                e.currentTarget.style.color = 'var(--color-bg)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = 'var(--color-accent)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              CONTACT ME 👋
+            </button>
+            <button
+              style={{
+                padding: '0.875rem 2rem',
+                backgroundColor: 'var(--color-accent)',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '2rem',
+                fontWeight: 600,
+                fontSize: '1rem',
+                cursor: 'pointer',
+                transition: 'all var(--transition-base)',
+                fontFamily: 'var(--font-sans)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 102, 255, 0.3)';
+              }}
+              onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              Say Hello
+              GET RESUME 👇
             </button>
           </div>
         </div>
 
-        {/* Right Column - Decorative Code Panel */}
+        {/* Right Column - Code Block */}
         <div
           style={{
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            justifySelf: 'start',
-            paddingLeft: 'var(--spacing-2xl)',
+            position: 'relative',
+            justifySelf: 'end',
           }}
         >
-          {/* Code-style panel */}
+          {/* Code Block */}
           <div
             style={{
-              position: 'relative',
-              width: '100%',
-              maxWidth: '500px',
-              padding: 'var(--spacing-2xl)',
-              backgroundColor: 'var(--color-bg-secondary)',
-              border: '1px solid var(--color-border)',
-              borderRadius: 'var(--radius-lg)',
+              maxWidth: '550px',
+              padding: '2rem',
+              backgroundColor: 'rgba(20, 20, 35, 0.6)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '1rem',
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.85rem',
+              fontSize: '0.9rem',
               color: 'var(--color-accent)',
-              lineHeight: 1.7,
+              lineHeight: 1.8,
               backdropFilter: 'blur(4px)',
               overflow: 'hidden',
             }}
           >
-            {/* Code block content */}
-            <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+            {/* Code block header dots */}
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
+              <div
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  backgroundColor: '#ff6b6b',
+                }}
+              />
+              <div
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  backgroundColor: '#ffd93d',
+                }}
+              />
+              <div
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  backgroundColor: '#6bcf7f',
+                }}
+              />
+            </div>
+            {/* Code content */}
+            <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }} width="100%">
               <div style={{ color: 'var(--color-text-tertiary)', marginBottom: '0.5rem' }}>
-                {/* Function signature */}
                 <span>const </span>
-                <span style={{ color: 'var(--color-accent)' }}>buildExperience</span>
-                <span> = () =&gt; &#123;</span>
+                <span style={{ color: 'var(--color-accent)' }}>developer</span>
+                <span> = {'{'}</span>
               </div>
-              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-accent)' }}>
-                return (
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: 'var(--color-accent)' }}>name</span>
+                <span>: </span>
+                <span style={{ color: '#90EE90' }}>'Chirag Sood'</span>
+                <span>,</span>
               </div>
-              <div style={{ paddingLeft: '3rem', marginBottom: '0.5rem' }}>
-                <span style={{ color: 'var(--color-text-tertiary)' }}>&lt;</span>
-                <span style={{ color: 'var(--color-accent)' }}>Developer</span>
-                <span style={{ color: 'var(--color-text-tertiary)' }}>&gt;</span>
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: 'var(--color-accent)' }}>role</span>
+                <span>: </span>
+                <span style={{ color: '#90EE90' }}>'Software Engineer'</span>
+                <span>,</span>
               </div>
-              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
-                skills=&#123;['React', 'TypeScript', 'Next.js']&#125;
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: 'var(--color-accent)' }}>skills</span>
+                <span>: [</span>
               </div>
-              <div style={{ paddingLeft: '4rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
-                passion=&#123;true&#125;
+
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.1rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: '#90EE90' }}>'Java'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'Python'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'Spring Boot'</span>
+                <span>,</span>
               </div>
-              <div style={{ paddingLeft: '4rem', marginBottom: '0.5rem', color: 'var(--color-text-tertiary)' }}>
-                ready=&#123;true&#125;
+
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.1rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: '#90EE90' }}>'Spring MVC'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'Spring Data JPA'</span>
+                <span>,</span>
               </div>
-              <div style={{ paddingLeft: '3rem', marginBottom: '0.5rem' }}>
-                <span style={{ color: 'var(--color-text-tertiary)' }}>/&gt;</span>
+
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.1rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: '#90EE90' }}>'HTML'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'CSS'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'JavaScript'</span>
+                <span>,</span>
               </div>
-              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-accent)' }}>
-                )
+
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.1rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: '#90EE90' }}>'React'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'SQL'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'MySQL'</span>
+                <span>,</span>
               </div>
+
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.1rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: '#90EE90' }}>'MongoDB'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'Git'</span>
+                <span>, </span>
+                <span style={{ color: '#90EE90' }}>'GitHub'</span>
+                <span>,</span>
+              </div>
+
+              <div style={{ paddingLeft: '3rem', marginBottom: '0.5rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: '#90EE90' }}>'Docker'</span>
+              </div>
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
+                <span>],</span>
+              </div>
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: 'var(--color-accent)' }}>hardWorker</span>
+                <span>: </span>
+                <span style={{ color: '#FFD700' }}>true</span>
+                <span>,</span>
+              </div>
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: 'var(--color-accent)' }}>quickLearner</span>
+                <span>: </span>
+                <span style={{ color: '#FFD700' }}>true</span>
+                <span>,</span>
+              </div>
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.3rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: 'var(--color-accent)' }}>problemSolver</span>
+                <span>: </span>
+                <span style={{ color: '#FFD700' }}>true</span>
+                <span>,</span>
+              </div>
+
+              <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-text-tertiary)' }}>
+                <span style={{ color: 'var(--color-accent)' }}>hireable</span>
+                <span>: </span>
+                <span style={{ color: '#FFD700' }}>true</span>
+              </div>
+
               <div style={{ color: 'var(--color-text-tertiary)' }}>
-                <span>&#125;</span>
+                <span>{'}'}</span>
+                <span>;</span>
               </div>
             </div>
-
-            {/* Cursor blink animation */}
-            <span
-              style={{
-                display: 'inline-block',
-                width: '2px',
-                height: '1rem',
-                backgroundColor: 'var(--color-accent)',
-                marginLeft: '0.25rem',
-                animation: 'blink 1s infinite',
-              }}
-            />
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 20,
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.5rem',
-            animation: 'bounce 2s ease-in-out infinite',
-          }}
-        >
-          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)', fontWeight: 500 }}>
-            Scroll to explore
-          </span>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="var(--color-accent)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
         </div>
       </div>
     </div>
