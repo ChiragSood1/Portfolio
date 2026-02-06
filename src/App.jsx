@@ -8,9 +8,9 @@ function PlaceholderSection({ id, title, copy }) {
   return (
     <section id={id} className="placeholder-section">
       <div className="placeholder-inner">
-        <p className="placeholder-label">{id}</p>
-        <h2>{title}</h2>
-        <p>{copy}</p>
+        {!title && <p className="placeholder-label">{id}</p>}
+        {title && <h2>{title}</h2>}
+        <p dangerouslySetInnerHTML={{ __html: copy }} />
       </div>
     </section>
   );
@@ -29,7 +29,7 @@ function App() {
           <PlaceholderSection
             id="about"
             title="About"
-            copy="About module will cover profile narrative, strengths, and delivery style."
+            copy="My name is <strong>Chirag Sood</strong>, and I am an enthusiastic programmer passionate about building reliable and meaningful software. I am a quick, self-driven learner who enjoys exploring new technologies and solving problems through code. I have a strong interest in web and backend development, with core skills in <strong>Java, Python, and SQL</strong>, and I focus on writing clean, simple, and maintainable code. I am always open to opportunities that support growth as a software engineer."
           />
           <PlaceholderSection
             id="experience"
@@ -40,11 +40,6 @@ function App() {
             id="projects"
             title="Projects"
             copy="Projects grid will be implemented next with independent card logic and hover behavior."
-          />
-          <PlaceholderSection
-            id="about"
-            title="About"
-            copy="About module will cover profile narrative, strengths, and delivery style."
           />
           <PlaceholderSection
             id="skills"
