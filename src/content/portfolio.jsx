@@ -2,7 +2,7 @@ export const profile = {
   name: "Chirag Sood",
   role: "Frontend Engineer and Product Builder",
   greeting: "Hello, I am",
-  bio: "I design and ship performant interfaces that balance visual polish, accessibility, and product clarity.",
+  bio: "I’m a computer science student who builds and ships practical web interfaces while learning system design, APIs, and scalable application architecture.",
   focus: "I work across React, TypeScript, and backend integrations to turn complex ideas into stable user experiences.",
   location: "United States",
   email: "chirag@example.com",
