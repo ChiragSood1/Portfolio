@@ -27,6 +27,11 @@ function App() {
           <HeroSpotlight />
 
           <PlaceholderSection
+            id="about"
+            title="About"
+            copy="About module will cover profile narrative, strengths, and delivery style."
+          />
+          <PlaceholderSection
             id="experience"
             title="Experience"
             copy={`${profile.focus} Experience section will be rebuilt in the next step.`}
