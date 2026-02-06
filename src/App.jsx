@@ -1,8 +1,9 @@
 import { FlowFieldCanvas } from "./components/background/FlowFieldCanvas.jsx";
-import { profile } from "./content/portfolio.js";
+import { profile } from "./content/portfolio.jsx";
 import { ColorModeProvider } from "./context/color-mode.jsx";
 import { HeroSpotlight } from "./sections/HeroSpotlight.jsx";
 import { TopNavigation } from "./sections/TopNavigation.jsx";
+import { useEffect } from "react";
 
 function PlaceholderSection({ id, title, copy }) {
   return (
@@ -17,6 +18,35 @@ function PlaceholderSection({ id, title, copy }) {
 }
 
 function App() {
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll(".placeholder-section"));
+    if (!sections.length) {
+      return undefined;
+    }
+
+    if (typeof window.IntersectionObserver === "undefined") {
+      sections.forEach((section) => section.classList.add("visible"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <ColorModeProvider>
       <FlowFieldCanvas />

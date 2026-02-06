@@ -1,4 +1,4 @@
-import { profile } from "../content/portfolio.js";
+import { profile } from "../content/portfolio.jsx";
 
 function splitName(name) {
   return name.split("").map((character, index) => ({

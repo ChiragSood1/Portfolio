@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { navigationItems, profile } from "../content/portfolio.js";
+import { navigationItems, profile } from "../content/portfolio.jsx";
 import { useColorMode } from "../context/color-mode.jsx";
 
 function IconSun() {
