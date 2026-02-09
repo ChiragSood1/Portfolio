@@ -33,7 +33,7 @@ export function HeroSpotlight() {
         <div className="hero-divider" />
 
         <div className="hero-cta-row">
-          <a href={profile.links.resume} target="_blank" rel="noreferrer" className="cta-primary">
+          <a href={profile.links.resume} download="Chirag_Sood_Resume.pdf" className="cta-primary">
             View Resume
           </a>
           <a href="#contact" className="cta-secondary">

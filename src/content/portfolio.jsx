@@ -4,12 +4,13 @@ export const profile = {
   greeting: "Hello, I am",
   bio: "I’m a computer science student who builds and ships practical web interfaces while learning system design, APIs, and scalable application architecture.",
   focus: "I work across React, TypeScript, and backend integrations to turn complex ideas into stable user experiences.",
-  location: "United States",
-  email: "chirag@example.com",
+  location: "Faridabad, Haryana, India",
+  email: "chiragsood25@gmail.com",
+  phone: "+91 8076330402",
   links: {
-    github: "https://github.com/chiragsood",
-    linkedin: "https://www.linkedin.com/in/chiragsood",
-    resume: "https://example.com/resume.pdf",
+    github: "https://github.com/chiragsood04ChiragSood01",
+    linkedin: "https://www.linkedin.com/in/chiragsood04",
+    resume: "/Chirag_Resume.pdf",
   },
 };
 

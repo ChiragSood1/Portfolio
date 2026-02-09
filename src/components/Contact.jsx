@@ -270,9 +270,7 @@ function Contact() {
               </p>
               <div className="flex space-x-4">
                 <motion.a
-                  href="https://www.linkedin.com/in/chiragsood04/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.95 }}
                   className={`p-3 rounded-xl transition-all ${
@@ -280,7 +278,7 @@ function Contact() {
                       ? 'bg-[#b8f2e6]/10 hover:bg-[#b8f2e6]/20 text-[#b8f2e6]'
                       : 'bg-[#aed9e0]/20 hover:bg-[#aed9e0]/40 text-[#5e6472]'
                   }`}
-                  aria-label="LinkedIn profile"
+                  aria-label="Social media link"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />

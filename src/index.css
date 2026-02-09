@@ -68,7 +68,7 @@ body {
   font-family: "Manrope", "Segoe UI", sans-serif;
   line-height: 1.6;
   margin: 0;
-  padding: 20px;
+  padding: 0;
 }
 
 .flow-canvas {
@@ -778,6 +778,329 @@ body {
   box-shadow: 0 12px 22px color-mix(in srgb, var(--accent-soft) 45%, transparent);
 }
 
+.skills-section {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  background: transparent;
+}
+
+.skills-shell {
+  width: min(76rem, 100%);
+  margin: 0 auto;
+  background: transparent;
+}
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.skills-header h2 {
+  margin: 0;
+  font-family: "Sora", "Manrope", sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(1.95rem, 4.8vw, 3.5rem);
+  color: var(--text-strong);
+}
+
+.skills-header p {
+  margin: 0.6rem auto 0;
+  max-width: 52ch;
+  color: color-mix(in srgb, var(--text-muted) 82%, var(--text-strong));
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  line-height: 1.45;
+}
+
+.skills-marquee {
+  overflow: hidden;
+  background: transparent;
+  padding: 0.35rem 0;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.skills-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: skills-marquee-scroll 48s linear infinite;
+  will-change: transform;
+}
+
+.skills-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 1rem;
+  flex: 0 0 auto;
+}
+
+.skill-pill {
+  display: grid;
+  place-items: center;
+  min-width: clamp(9.4rem, 13.5vw, 11.6rem);
+  min-height: clamp(6.1rem, 8.2vw, 7.6rem);
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--line));
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--text-strong);
+  font-size: clamp(1.02rem, 1.55vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.01em;
+  text-align: center;
+  white-space: normal;
+  cursor: pointer;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--accent-soft) 38%, transparent);
+  transition: transform 220ms var(--curve-enter), box-shadow 220ms var(--curve-enter),
+    border-color 220ms var(--curve-enter), background-color 220ms var(--curve-enter),
+    opacity 220ms var(--curve-enter);
+}
+
+.skills-marquee:hover .skills-marquee-track {
+  animation-play-state: paused;
+}
+
+.skills-marquee:hover .skill-pill {
+  opacity: 0.78;
+}
+
+.skill-pill:hover {
+  opacity: 1;
+  transform: scale(1.035);
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--line));
+  background: color-mix(in srgb, var(--accent-soft) 75%, var(--surface));
+  box-shadow: 0 14px 26px color-mix(in srgb, var(--accent-soft) 58%, transparent);
+}
+
+.contact-section {
+  padding: clamp(1.2rem, 3.2vw, 2.4rem) 0 clamp(0.8rem, 2.2vw, 1.4rem);
+}
+
+.contact-shell {
+  position: relative;
+  width: min(76rem, 100%);
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  padding: clamp(1rem, 2.4vw, 1.8rem);
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.contact-shell::before {
+  content: none;
+}
+
+.contact-shell::after {
+  content: none;
+}
+
+.contact-header,
+.contact-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: clamp(1rem, 2.6vw, 1.8rem);
+}
+
+.contact-header h2 {
+  margin: 0;
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: clamp(1.7rem, 3.8vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.contact-header-line {
+  width: 5.2rem;
+  height: 0.2rem;
+  margin: 0.55rem auto 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 80%, white 20%);
+}
+
+.contact-grid {
+  display: grid;
+  gap: clamp(1rem, 2.6vw, 2.8rem);
+  grid-template-columns: 1fr;
+}
+
+.contact-left h3 {
+  margin: 0;
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.15rem);
+  line-height: 1.08;
+  color: color-mix(in srgb, var(--accent) 92%, white 8%);
+}
+
+.contact-left > p {
+  margin: 0.65rem 0 0;
+  max-width: 42ch;
+  color: color-mix(in srgb, var(--text-muted) 88%, white 12%);
+  font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+}
+
+.contact-info-list {
+  margin-top: 1.35rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-info-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(145, 214, 208, 0.2);
+  border-radius: 1.05rem;
+  padding: 0.8rem 0.9rem;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(160, 216, 209, 0.09) 0%,
+      rgba(160, 216, 209, 0.07) 52%,
+      rgba(160, 216, 209, 0.05) 100%
+    );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.contact-icon-box {
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 0.72rem;
+  display: grid;
+  place-items: center;
+  background: rgba(151, 217, 210, 0.2);
+  border: 1px solid rgba(151, 217, 210, 0.2);
+}
+
+.contact-icon-box svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 86%, white 14%);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-info-label {
+  margin: 0;
+  color: color-mix(in srgb, var(--text-muted) 78%, white 22%);
+  font-size: 0.88rem;
+}
+
+.contact-info-value {
+  margin: 0.18rem 0 0;
+  color: color-mix(in srgb, var(--accent) 94%, white 6%);
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.contact-social {
+  margin-top: 1.3rem;
+}
+
+.contact-social p {
+  margin: 0 0 0.8rem;
+  font-size: 0.94rem;
+  color: color-mix(in srgb, var(--text-muted) 80%, white 20%);
+}
+
+.contact-social a {
+  display: inline-grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 0.7rem;
+  background: rgba(116, 176, 169, 0.26);
+  border: 1px solid rgba(145, 214, 208, 0.24);
+  transition: transform 220ms var(--curve-enter), background-color 220ms var(--curve-enter);
+}
+
+.contact-social a:hover {
+  transform: translateY(-2px);
+  background: rgba(116, 176, 169, 0.34);
+}
+
+.contact-social a span {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--accent) 84%, white 16%);
+}
+
+.contact-form {
+  display: grid;
+  align-content: start;
+  gap: 0.66rem;
+}
+
+.contact-form label {
+  color: color-mix(in srgb, var(--accent) 88%, white 12%);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(145, 214, 208, 0.42);
+  background: rgba(94, 110, 131, 0.56);
+  color: color-mix(in srgb, var(--accent) 84%, white 16%);
+  font-size: 0.98rem;
+  padding: 0.84rem 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 220ms var(--curve-enter), box-shadow 220ms var(--curve-enter);
+}
+
+.contact-form textarea {
+  resize: none;
+  min-height: 9rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: color-mix(in srgb, var(--text-muted) 72%, white 28%);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(184, 242, 230, 0.16);
+}
+
+.contact-form button {
+  margin-top: 0.4rem;
+  height: 3.25rem;
+  border-radius: 0.82rem;
+  border: 0;
+  background: color-mix(in srgb, var(--accent) 92%, white 8%);
+  color: #56606b;
+  font-size: clamp(1rem, 1.15vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.62rem;
+  cursor: pointer;
+  transition: transform 220ms var(--curve-enter), box-shadow 220ms var(--curve-enter);
+}
+
+.contact-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(146, 210, 202, 0.15);
+}
+
 .placeholder-section {
   min-height: 55vh;
   display: grid;
@@ -865,6 +1188,239 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+:root[data-theme="light"] {
+  --bg: #f2f6f7;
+  --surface: #ffffff;
+  --line: rgba(29, 58, 64, 0.24);
+  --text-strong: #122126;
+  --text-muted: #38525a;
+  --accent: #6bb7b1;
+  --accent-strong: #2f767b;
+  --accent-soft: rgba(107, 183, 177, 0.16);
+  --ring: rgba(47, 118, 123, 0.34);
+}
+
+:root[data-theme="light"] .top-nav {
+  background: color-mix(in srgb, var(--bg) 97%, white 3%);
+  backdrop-filter: blur(5px);
+  border-bottom-color: color-mix(in srgb, var(--line) 85%, transparent);
+}
+
+:root[data-theme="light"] .top-nav.top-nav-scrolled {
+  background: color-mix(in srgb, var(--bg) 99%, white 1%);
+  box-shadow: 0 10px 20px rgba(18, 33, 38, 0.08);
+}
+
+:root[data-theme="light"] .theme-button,
+:root[data-theme="light"] .menu-button {
+  background: color-mix(in srgb, var(--surface) 92%, var(--accent-soft));
+  border-color: color-mix(in srgb, var(--line) 84%, var(--accent-soft));
+}
+
+:root[data-theme="light"] .hero-greeting,
+:root[data-theme="light"] .hero-role,
+:root[data-theme="light"] .hero-copy {
+  color: color-mix(in srgb, var(--text-muted) 95%, var(--text-strong) 5%);
+}
+
+:root[data-theme="light"] .hero-divider {
+  background: color-mix(in srgb, var(--accent-strong) 70%, var(--accent) 30%);
+}
+
+:root[data-theme="light"] .about-media {
+  border-color: color-mix(in srgb, var(--line) 82%, var(--accent-soft));
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      color-mix(in srgb, var(--accent-soft) 72%, transparent) 0%,
+      transparent 44%
+    ),
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--surface) 98%, #eef4f5 2%) 0%,
+      color-mix(in srgb, var(--surface) 96%, #ecf2f4 4%) 100%
+    );
+  box-shadow:
+    0 10px 24px rgba(15, 32, 38, 0.1),
+    0 0 0 1px color-mix(in srgb, var(--accent-soft) 60%, transparent);
+}
+
+:root[data-theme="light"] .about-tag {
+  color: color-mix(in srgb, var(--accent-strong) 82%, var(--text-strong));
+}
+
+:root[data-theme="light"] .about-stat-card {
+  border-color: color-mix(in srgb, var(--line) 90%, var(--accent-soft));
+  background: color-mix(in srgb, var(--surface) 98%, #edf4f5 2%);
+  box-shadow: 0 8px 18px rgba(18, 33, 38, 0.06);
+}
+
+:root[data-theme="light"] .project-showcase-card {
+  border-color: color-mix(in srgb, var(--line) 86%, var(--accent-soft));
+  background:
+    linear-gradient(
+      168deg,
+      color-mix(in srgb, var(--surface) 98%, #f0f6f7 2%) 0%,
+      color-mix(in srgb, var(--surface) 94%, #e9f2f4 6%) 58%,
+      color-mix(in srgb, var(--surface) 95%, #edf4f6 5%) 100%
+    );
+  box-shadow:
+    0 14px 28px rgba(18, 33, 38, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 0 0 1px color-mix(in srgb, var(--accent-soft) 36%, transparent);
+}
+
+:root[data-theme="light"] .project-showcase-card::before {
+  background: color-mix(in srgb, var(--accent-soft) 90%, transparent);
+  opacity: 0.6;
+}
+
+:root[data-theme="light"] .project-showcase-card::after {
+  background: linear-gradient(
+    112deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-soft) 48%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+:root[data-theme="light"] .project-showcase-card:hover {
+  box-shadow:
+    0 18px 34px rgba(18, 33, 38, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 0 0 1px color-mix(in srgb, var(--accent-soft) 54%, transparent);
+}
+
+:root[data-theme="light"] .project-card-subtitle {
+  color: color-mix(in srgb, var(--accent-strong) 88%, var(--text-strong));
+}
+
+:root[data-theme="light"] .project-card-description,
+:root[data-theme="light"] .project-highlights li {
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text-strong));
+}
+
+:root[data-theme="light"] .project-tech-row span {
+  border-color: color-mix(in srgb, var(--line) 78%, var(--accent-soft));
+  background: color-mix(in srgb, var(--surface) 92%, var(--accent-soft));
+}
+
+:root[data-theme="light"] .project-action-row {
+  border-top-color: color-mix(in srgb, var(--line) 82%, var(--accent-soft));
+}
+
+:root[data-theme="light"] .project-action-row a {
+  color: var(--accent-strong);
+}
+
+:root[data-theme="light"] .projects-footer a {
+  background: color-mix(in srgb, var(--surface) 95%, #eef4f5 5%);
+  border-color: color-mix(in srgb, var(--line) 80%, var(--accent-soft));
+}
+
+:root[data-theme="light"] .contact-header h2 {
+  color: var(--accent-strong);
+}
+
+:root[data-theme="light"] .contact-left h3 {
+  color: var(--text-strong);
+}
+
+:root[data-theme="light"] .contact-left > p,
+:root[data-theme="light"] .contact-social p,
+:root[data-theme="light"] .contact-info-label {
+  color: color-mix(in srgb, var(--text-muted) 90%, var(--text-strong));
+}
+
+:root[data-theme="light"] .contact-info-card {
+  border-color: color-mix(in srgb, var(--line) 78%, var(--accent-soft));
+  background:
+    linear-gradient(
+      100deg,
+      color-mix(in srgb, var(--surface) 96%, #eef4f5 4%) 0%,
+      color-mix(in srgb, var(--surface) 94%, #eaf2f4 6%) 100%
+    );
+  box-shadow: 0 8px 16px rgba(17, 33, 39, 0.06);
+}
+
+:root[data-theme="light"] .contact-icon-box {
+  background: color-mix(in srgb, var(--surface) 82%, var(--accent-soft));
+  border-color: color-mix(in srgb, var(--line) 72%, var(--accent-soft));
+}
+
+:root[data-theme="light"] .contact-icon-box svg {
+  stroke: color-mix(in srgb, var(--accent-strong) 84%, var(--text-strong));
+}
+
+:root[data-theme="light"] .contact-info-value {
+  color: var(--text-strong);
+}
+
+:root[data-theme="light"] .contact-social a {
+  background: color-mix(in srgb, var(--surface) 95%, #edf4f5 5%);
+  border-color: color-mix(in srgb, var(--line) 76%, var(--accent-soft));
+}
+
+:root[data-theme="light"] .contact-social a:hover {
+  background: color-mix(in srgb, var(--surface) 88%, var(--accent-soft));
+}
+
+:root[data-theme="light"] .contact-social a span {
+  background: var(--accent-strong);
+}
+
+:root[data-theme="light"] .contact-form label {
+  color: color-mix(in srgb, var(--text-strong) 84%, var(--accent-strong));
+}
+
+:root[data-theme="light"] .contact-form input,
+:root[data-theme="light"] .contact-form textarea {
+  border-color: color-mix(in srgb, var(--line) 82%, var(--accent-soft));
+  background: color-mix(in srgb, var(--surface) 98%, #eef4f5 2%);
+  color: var(--text-strong);
+}
+
+:root[data-theme="light"] .contact-form input::placeholder,
+:root[data-theme="light"] .contact-form textarea::placeholder {
+  color: color-mix(in srgb, var(--text-muted) 82%, var(--text-strong));
+}
+
+:root[data-theme="light"] .contact-form input:focus,
+:root[data-theme="light"] .contact-form textarea:focus {
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(47, 118, 123, 0.16);
+}
+
+:root[data-theme="light"] .contact-form button {
+  background: color-mix(in srgb, var(--accent-strong) 90%, #5d9fa3 10%);
+  color: #f7fafa;
+}
+
+:root[data-theme="light"] .contact-form button:hover {
+  box-shadow: 0 8px 16px rgba(47, 118, 123, 0.2);
+}
+
+:root[data-theme="light"] .placeholder-inner {
+  border-color: color-mix(in srgb, var(--line) 88%, var(--accent-soft));
+  background: color-mix(in srgb, var(--surface) 96%, #edf3f5 4%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 12px 26px rgba(18, 33, 38, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 0 0 1px color-mix(in srgb, var(--accent-soft) 34%, transparent);
+}
+
+:root[data-theme="light"] .placeholder-inner::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-soft) 30%, transparent) 0%,
+    transparent 40%,
+    color-mix(in srgb, var(--accent-soft) 24%, transparent) 70%,
+    transparent 100%
+  );
+}
+
 @keyframes drift {
   0%,
   100% {
@@ -886,6 +1442,15 @@ button:focus-visible {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes skills-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -937,14 +1502,45 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .skills-marquee {
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  }
+
   .project-card-description {
     min-height: 0;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 70rem) {
+  .contact-grid {
+    grid-template-columns: minmax(19rem, 0.9fr) minmax(0, 1fr);
+    align-items: start;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .skills-marquee {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .skills-marquee-track {
+    animation: none;
+    transform: none;
+  }
+
+  .skills-marquee-group[aria-hidden="true"] {
+    display: none;
   }
 
   *,
