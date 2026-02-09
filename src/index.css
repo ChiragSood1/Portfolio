@@ -98,17 +98,20 @@ body {
   left: 0;
   right: 0;
   z-index: 20;
-  transition: background-color 260ms var(--curve-enter), box-shadow 260ms var(--curve-enter),
-    border-color 260ms var(--curve-enter);
+  transition: all 260ms var(--curve-enter);
   background: color-mix(in srgb, var(--bg) 86%, transparent);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent;
+  transform-style: preserve-3d;
 }
 
 .top-nav.top-nav-scrolled {
   border-bottom-color: var(--line);
   box-shadow: 0 14px 24px rgba(0, 0, 0, 0.08);
   background: color-mix(in srgb, var(--bg) 95%, transparent);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 
 .top-nav-inner {
@@ -368,8 +371,27 @@ body {
   border-radius: 1rem;
   padding: 0.86rem 1.45rem;
   font-weight: 600;
-  transition: transform 220ms var(--curve-enter), box-shadow 220ms var(--curve-enter),
-    border-color 220ms var(--curve-enter), background-color 220ms var(--curve-enter);
+  transition: all 220ms var(--curve-enter);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.cta-primary::before,
+.cta-secondary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cta-primary:hover::before,
+.cta-secondary:hover::before {
+  left: 100%;
 }
 
 .cta-primary {
@@ -380,18 +402,22 @@ body {
 }
 
 .cta-primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 32px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 .cta-secondary {
   border: 1px solid color-mix(in srgb, var(--accent) 36%, var(--line));
   background: color-mix(in srgb, var(--surface) 80%, transparent);
   color: var(--text-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .cta-secondary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
   border-color: var(--accent);
+  box-shadow: 0 14px 24px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .reveal-section {
@@ -574,21 +600,19 @@ body {
   position: relative;
   border-radius: 1.35rem;
   border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
-  background:
-    linear-gradient(
-      168deg,
-      color-mix(in srgb, #1f2730 84%, var(--surface)) 0%,
-      color-mix(in srgb, #242c35 80%, var(--surface)) 58%,
-      color-mix(in srgb, #202832 82%, var(--surface)) 100%
-    );
-  box-shadow:
-    0 18px 34px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 0 1px color-mix(in srgb, var(--accent-soft) 45%, transparent);
+  background: linear-gradient(168deg, color-mix(in srgb, #1f2730 84%, var(--surface)) 0%, color-mix(in srgb, #242c35 80%, var(--surface)) 58%, color-mix(in srgb, #202832 82%, var(--surface)) 100%);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 0 1px color-mix(in srgb, var(--accent-soft) 45%, transparent);
   padding: 1.25rem 1.22rem 1.05rem;
   overflow: hidden;
-  transition: transform 280ms var(--curve-enter), box-shadow 280ms var(--curve-enter),
-    border-color 280ms var(--curve-enter);
+  transition: all 280ms var(--curve-enter);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-showcase-card:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px color-mix(in srgb, var(--accent-soft) 65%, transparent);
+  border-color: var(--accent);
 }
 
 .project-showcase-card::before {
@@ -1550,4 +1574,143 @@ button:focus-visible {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  color: #0f1718;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms var(--curve-enter);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.2rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-strong);
+}
+
+/* Enhanced text selection */
+::selection {
+  background: var(--accent);
+  color: #0f1718;
+}
+
+::-moz-selection {
+  background: var(--accent);
+  color: #0f1718;
+}
+
+/* Focus styles for better accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, color-mix(in srgb, var(--surface) 50%, var(--line)) 50%, var(--surface) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-sm);
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Enhanced focus styles */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Improved hover states for all interactive elements */
+a:hover, button:hover {
+  transform: translateY(-1px);
+  transition: all 200ms var(--curve-enter);
+}
+
+/* Enhanced card animations */
+.about-stat-card:hover,
+.contact-info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transition: all 200ms var(--curve-enter);
+}
+
+/* Better text shadows for readability */
+.hero-title,
+.about-heading,
+.projects-header h2,
+.skills-header h2,
+.contact-header h2 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced particle background */
+.flow-canvas {
+  filter: brightness(1.1) contrast(1.05);
 }

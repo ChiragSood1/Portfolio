@@ -2,7 +2,7 @@ import { FlowFieldCanvas } from "./components/background/FlowFieldCanvas.jsx";
 import { ColorModeProvider } from "./context/color-mode.jsx";
 import { HeroSpotlight } from "./sections/HeroSpotlight.jsx";
 import { TopNavigation } from "./sections/TopNavigation.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AboutSection from "./components/AboutSection.jsx";
 import ProjectsSection from "./components/ProjectsSection.jsx";
 import SkillsSection from "./components/SkillsSection.jsx";
@@ -11,6 +11,8 @@ import PlaceholderSection from "./components/PlaceholderSection.jsx";
 import { profile } from "./content/portfolio.jsx";
 
 function App() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
   useEffect(() => {
     const sections = document.querySelectorAll(".reveal-section");
     if (!sections.length) {
@@ -36,13 +38,39 @@ function App() {
 
     sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
+    // Handle scroll to top button visibility
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <ColorModeProvider>
       <FlowFieldCanvas />
       <TopNavigation />
+      
+      {/* Scroll to top button */}
+      {showScrollTop && (
+        <button 
+          className="scroll-to-top visible" 
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+        >
+          ↑
+        </button>
+      )}
 
       <div className="site-shell">
         <main className="site-main">
