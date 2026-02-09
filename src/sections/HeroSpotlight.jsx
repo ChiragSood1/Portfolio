@@ -1,18 +1,16 @@
 import { profile } from "../content/portfolio.jsx";
 
-function splitName(name) {
-  return name.split("").map((character, index) => ({
-    id: `${character}-${index}`,
-    character,
+function HeroSpotlight() {
+  // Split name into individual letters for animation
+  const nameLetters = profile.name.split("").map((letter, index) => ({
+    id: `${letter}-${index}`,
+    character: letter,
     delay: 0.32 + index * 0.035,
   }));
-}
-
-export function HeroSpotlight() {
-  const letters = splitName(profile.name);
 
   return (
     <section id="home" className="hero-wrap">
+      {/* Background orbs for visual effect */}
       <div className="hero-orb hero-orb-a" />
       <div className="hero-orb hero-orb-b" />
 
@@ -20,9 +18,9 @@ export function HeroSpotlight() {
         <p className="hero-greeting">{profile.greeting}</p>
 
         <h1 className="hero-title">
-          {letters.map((entry) => (
-            <span key={entry.id} style={{ animationDelay: `${entry.delay}s` }}>
-              {entry.character === " " ? "\u00A0" : entry.character}
+          {nameLetters.map((letter) => (
+            <span key={letter.id} style={{ animationDelay: `${letter.delay}s` }}>
+              {letter.character === " " ? "\u00A0" : letter.character}
             </span>
           ))}
         </h1>
@@ -44,3 +42,5 @@ export function HeroSpotlight() {
     </section>
   );
 }
+
+export { HeroSpotlight };

@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 
 const PARTICLE_COUNT = 36;
 
-function buildNodes(width, height) {
+// Create random particles for the background animation
+function createParticles(width, height) {
   return Array.from({ length: PARTICLE_COUNT }, () => ({
     x: Math.random() * width,
     y: Math.random() * height,
@@ -17,82 +18,88 @@ export function FlowFieldCanvas() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) {
-      return undefined;
-    }
+    if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) {
-      return undefined;
-    }
+    if (!ctx) return;
 
+    // Check if user prefers reduced motion
     const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    let width = 0;
-    let height = 0;
+    
+    let animationFrame = 0;
+    let canvasWidth = 0;
+    let canvasHeight = 0;
     let particles = [];
 
-    const resize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
+    // Setup canvas size and particles
+    function setupCanvas() {
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight;
 
-      const ratio = window.devicePixelRatio || 1;
-      canvas.width = Math.floor(width * ratio);
-      canvas.height = Math.floor(height * ratio);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const pixelRatio = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(canvasWidth * pixelRatio);
+      canvas.height = Math.floor(canvasHeight * pixelRatio);
+      canvas.style.width = `${canvasWidth}px`;
+      canvas.style.height = `${canvasHeight}px`;
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-      particles = buildNodes(width, height);
-    };
+      particles = createParticles(canvasWidth, canvasHeight);
+    }
 
-    const paint = () => {
-      const darkMode = document.documentElement.dataset.theme === "dark";
-      const dotColor = darkMode ? "rgba(158, 223, 214, 0.4)" : "rgba(63, 117, 124, 0.32)";
-      const lineColor = darkMode ? "rgba(158, 223, 214, 0.08)" : "rgba(63, 117, 124, 0.1)";
-      const glowColor = darkMode ? "rgba(109, 185, 176, 0.08)" : "rgba(99, 169, 178, 0.1)";
+    // Draw the animation frame
+    function drawFrame() {
+      const isDarkMode = document.documentElement.dataset.theme === "dark";
+      
+      // Set colors based on theme
+      const dotColor = isDarkMode ? "rgba(158, 223, 214, 0.4)" : "rgba(63, 117, 124, 0.32)";
+      const lineColor = isDarkMode ? "rgba(158, 223, 214, 0.08)" : "rgba(63, 117, 124, 0.1)";
+      const glowColor = isDarkMode ? "rgba(109, 185, 176, 0.08)" : "rgba(99, 169, 178, 0.1)";
 
-      ctx.clearRect(0, 0, width, height);
+      // Clear canvas
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-      const radial = ctx.createRadialGradient(
-        width * 0.7,
-        height * 0.2,
-        width * 0.08,
-        width * 0.7,
-        height * 0.2,
-        width * 0.85,
+      // Draw background glow
+      const gradient = ctx.createRadialGradient(
+        canvasWidth * 0.7,
+        canvasHeight * 0.2,
+        canvasWidth * 0.08,
+        canvasWidth * 0.7,
+        canvasHeight * 0.2,
+        canvasWidth * 0.85
       );
-      radial.addColorStop(0, glowColor);
-      radial.addColorStop(1, "rgba(0, 0, 0, 0)");
-      ctx.fillStyle = radial;
-      ctx.fillRect(0, 0, width, height);
+      gradient.addColorStop(0, glowColor);
+      gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-      particles.forEach((node) => {
-        node.x += node.vx;
-        node.y += node.vy;
+      // Update and draw particles
+      particles.forEach((particle) => {
+        // Update position
+        particle.x += particle.vx;
+        particle.y += particle.vy;
 
-        if (node.x < -10 || node.x > width + 10) {
-          node.vx *= -1;
+        // Bounce off walls
+        if (particle.x < -10 || particle.x > canvasWidth + 10) {
+          particle.vx *= -1;
+        }
+        if (particle.y < -10 || particle.y > canvasHeight + 10) {
+          particle.vy *= -1;
         }
 
-        if (node.y < -10 || node.y > height + 10) {
-          node.vy *= -1;
-        }
-
+        // Draw particle
         ctx.beginPath();
         ctx.fillStyle = dotColor;
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      for (let index = 0; index < particles.length - 1; index += 1) {
-        const current = particles[index];
-        const next = particles[index + 1];
+      // Draw lines between nearby particles
+      for (let i = 0; i < particles.length - 1; i++) {
+        const current = particles[i];
+        const next = particles[i + 1];
         const distance = Math.hypot(current.x - next.x, current.y - next.y);
 
-        if (distance > 135) {
-          continue;
-        }
+        if (distance > 135) continue;
 
         ctx.beginPath();
         ctx.strokeStyle = lineColor;
@@ -101,42 +108,49 @@ export function FlowFieldCanvas() {
         ctx.lineTo(next.x, next.y);
         ctx.stroke();
       }
-    };
+    }
 
-    const renderLoop = () => {
-      paint();
-      frame = window.requestAnimationFrame(renderLoop);
-    };
+    // Animation loop
+    function animate() {
+      drawFrame();
+      animationFrame = window.requestAnimationFrame(animate);
+    }
 
-    const stopLoop = () => {
-      if (frame) {
-        window.cancelAnimationFrame(frame);
+    // Stop animation
+    function stopAnimation() {
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
       }
-    };
+    }
 
-    const startLoop = () => {
+    // Start animation (or draw single frame if reduced motion)
+    function startAnimation() {
       if (reducedMotionQuery.matches) {
-        paint();
+        drawFrame();
         return;
       }
-      frame = window.requestAnimationFrame(renderLoop);
-    };
+      animationFrame = window.requestAnimationFrame(animate);
+    }
 
-    const onMotionChange = () => {
-      stopLoop();
-      startLoop();
-    };
+    // Handle motion preference changes
+    function handleMotionChange() {
+      stopAnimation();
+      startAnimation();
+    }
 
-    resize();
-    startLoop();
+    // Initialize
+    setupCanvas();
+    startAnimation();
 
-    window.addEventListener("resize", resize);
-    reducedMotionQuery.addEventListener("change", onMotionChange);
+    // Event listeners
+    window.addEventListener("resize", setupCanvas);
+    reducedMotionQuery.addEventListener("change", handleMotionChange);
 
+    // Cleanup
     return () => {
-      stopLoop();
-      window.removeEventListener("resize", resize);
-      reducedMotionQuery.removeEventListener("change", onMotionChange);
+      stopAnimation();
+      window.removeEventListener("resize", setupCanvas);
+      reducedMotionQuery.removeEventListener("change", handleMotionChange);
     };
   }, []);
 
