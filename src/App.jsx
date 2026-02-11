@@ -8,6 +8,7 @@ import ProjectsSection from "./components/ProjectsSection.jsx";
 import SkillsSection from "./components/SkillsSection.jsx";
 import ContactSection from "./components/ContactSection.jsx";
 import PlaceholderSection from "./components/PlaceholderSection.jsx";
+import Footer from "./components/Footer.jsx";
 import { profile } from "./content/portfolio.jsx";
 
 function App() {
@@ -85,6 +86,7 @@ function App() {
           <SkillsSection />
           <ContactSection />
         </main>
+        <Footer />
       </div>
     </ColorModeProvider>
   );
