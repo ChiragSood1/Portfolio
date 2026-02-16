@@ -117,8 +117,8 @@ export function TopNavigation() {
       </div>
 
       {/* Mobile navigation */}
-      <div 
-        id="mobile-nav-sheet" 
+      <div
+        id="mobile-nav-sheet"
         className={mobileMenuOpen ? "menu-mobile open" : "menu-mobile"}
       >
         {navigationItems.map((item) => (

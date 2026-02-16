@@ -1,3 +1,5 @@
+import { profile } from "../content/portfolio.jsx";
+
 function ProjectsSection() {
   const projects = [
     {
@@ -11,7 +13,7 @@ function ProjectsSection() {
         "Excel import/export and email notifications",
       ],
       stack: ["Spring Boot", "MySQL", "Spring Security", "JPA"],
-      repositoryUrl: "#",
+      repositoryUrl: `${profile.links.github}?tab=repositories`,
     },
     {
       name: "Personal Finance Tracker (CLI)",
@@ -40,12 +42,6 @@ function ProjectsSection() {
       repositoryUrl: "https://github.com/ChiragSood1/SmartCheck",
     },
   ];
-
-  const handleProjectClick = (event, projectUrl) => {
-    if (projectUrl === "#") {
-      event.preventDefault();
-    }
-  };
 
   return (
     <section id="projects" className="projects-section reveal-section">
@@ -81,9 +77,8 @@ function ProjectsSection() {
                   href={project.repositoryUrl}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={(event) => handleProjectClick(event, project.repositoryUrl)}
                 >
-                  👉 View Repository <span aria-hidden="true">→</span>
+                  View Repository <span aria-hidden="true">→</span>
                 </a>
               </div>
             </article>

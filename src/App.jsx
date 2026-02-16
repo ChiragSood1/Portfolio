@@ -6,10 +6,9 @@ import { useEffect, useState } from "react";
 import AboutSection from "./components/AboutSection.jsx";
 import ProjectsSection from "./components/ProjectsSection.jsx";
 import SkillsSection from "./components/SkillsSection.jsx";
+import Education from "./components/Education.jsx";
 import ContactSection from "./components/ContactSection.jsx";
-import PlaceholderSection from "./components/PlaceholderSection.jsx";
 import Footer from "./components/Footer.jsx";
-import { profile } from "./content/portfolio.jsx";
 
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -77,13 +76,10 @@ function App() {
         <main className="site-main">
           <HeroSpotlight />
           <AboutSection />
-          <PlaceholderSection
-            id="experience"
-            title="Experience"
-            copy={`${profile.focus} Experience section will be rebuilt in the next step.`}
-          />
+          {/* Experience section removed */}
           <ProjectsSection />
           <SkillsSection />
+          <Education />
           <ContactSection />
         </main>
         <Footer />

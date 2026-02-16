@@ -1,4 +1,4 @@
-import { profile } from "../content/portfolio.jsx";
+// profile import removed as it's not used here
 
 function PlaceholderSection({ id, title, copy }) {
   return (

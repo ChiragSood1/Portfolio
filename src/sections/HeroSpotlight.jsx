@@ -25,8 +25,8 @@ function HeroSpotlight() {
           ))}
         </h1>
 
-        <p className="hero-role">{profile.role}</p>
-        <p className="hero-copy">{profile.bio}</p>
+  <p className="hero-role">{profile.role}</p>
+  <p className="hero-copy">{profile.bio}</p>
 
         <div className="hero-divider" />
 

@@ -1,5 +1,5 @@
 const skillsMarqueeLine =
-  "Java • Python • JavaScript • SQL • HTML5 • CSS3 • Pandas • NumPy • MySQL • Git • GitHub • Postman • VS Code • Jupyter Notebook the data";
+  "Java • Spring Boot • Python • JavaScript • TypeScript • SQL • MySQL • REST APIs • HTML5 • CSS3 • React • Git • GitHub • Postman • JUnit • Pandas • NumPy • Jupyter Notebook";
 const skillsMarqueeItems = skillsMarqueeLine.split(" • ");
 
 function SkillsSection() {
