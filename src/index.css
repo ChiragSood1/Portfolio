@@ -74,6 +74,14 @@
   .flow-canvas { position:fixed; inset:0; width:100vw; height:100vh; z-index:0; pointer-events:none; filter:brightness(1.1) contrast(1.05) }
   .site-shell { position:relative; z-index:1 }
   .site-main { width: min(var(--site-max), calc(100% - var(--shell-gutter))); margin:0 auto; padding: var(--space-8) 0 var(--space-9) }
+  .site-main > section {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .site-main > section.skills-section {
+    min-height: 72vh;
+    min-height: 72svh;
+  }
 
   /* Top nav */
   /* Top navigation: full width header with translucent surface and compact inner container */
@@ -209,6 +217,143 @@
   .about-stat-card{ margin:0; border:1px solid color-mix(in srgb,var(--accent)30%,var(--line)); border-radius:var(--radius-sm); background: color-mix(in srgb,var(--surface)88%,transparent); padding:.84rem .8rem; text-align:center }
   .about-stat-value{ margin:0; font-size:clamp(1.1rem,2.1vw,1.5rem); line-height:1; font-weight:800; letter-spacing:-0.02em; color:var(--accent-strong) }
   .about-stat-label{ margin:.35rem 0 0; font-size:.86rem; color:var(--text-muted) }
+
+  /* Experience */
+  .experience-section{ padding:clamp(1.8rem,4.4vw,3.2rem) 0 }
+  .experience-shell{ width:min(var(--site-max),100%); margin:0 auto }
+  .experience-header{ text-align:center; margin-bottom:clamp(1rem,2.6vw,1.65rem) }
+  .experience-header h2{
+    margin:0;
+    font-family:"Sora","Manrope",sans-serif;
+    letter-spacing:-0.03em;
+    line-height:1.05;
+    font-size:clamp(1.95rem,4.8vw,3.5rem);
+    color:var(--text-strong);
+  }
+  .experience-header-line{
+    width:5.2rem;
+    height:.22rem;
+    margin:.58rem auto 0;
+    border-radius:999px;
+    background: linear-gradient(90deg, color-mix(in srgb,var(--accent-strong) 84%,var(--text-strong)), var(--accent));
+  }
+  .experience-timeline{
+    position:relative;
+    width:min(64rem,100%);
+    margin:0 auto;
+    padding:1rem 0 .25rem;
+  }
+  .experience-spine{
+    position:absolute;
+    left:clamp(.9rem,6vw,2.3rem);
+    top:.25rem;
+    bottom:1rem;
+    width:2px;
+    background: linear-gradient(to bottom, transparent, color-mix(in srgb,var(--accent) 62%,transparent) 12%, color-mix(in srgb,var(--accent) 62%,transparent) 88%, transparent);
+    box-shadow:0 0 12px color-mix(in srgb,var(--accent-soft) 76%,transparent);
+  }
+  .experience-item{
+    position:relative;
+    padding-left:clamp(3.1rem,8.6vw,6rem);
+  }
+  .experience-node{
+    position:absolute;
+    left:calc(clamp(.9rem,6vw,2.3rem) - .4rem);
+    top:1.8rem;
+    width:.92rem;
+    height:.92rem;
+    border-radius:999px;
+    background: linear-gradient(145deg, color-mix(in srgb,var(--accent) 90%,white 10%), var(--accent-strong));
+    border:2px solid color-mix(in srgb,var(--accent) 58%,var(--line));
+    box-shadow:0 0 0 5px color-mix(in srgb,var(--accent-soft) 72%,transparent);
+  }
+  .experience-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:1.25rem;
+    border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));
+    background: linear-gradient(155deg, color-mix(in srgb,var(--surface) 92%,transparent) 0%, color-mix(in srgb,var(--surface) 84%,transparent) 100%);
+    padding:1.45rem 1.35rem 1.2rem;
+    box-shadow:0 14px 28px color-mix(in srgb, rgba(0,0,0,0.14) 78%,transparent), inset 0 1px 0 color-mix(in srgb,var(--accent-soft) 56%,transparent);
+    transition: transform 260ms var(--curve-enter), border-color 260ms var(--curve-enter), box-shadow 260ms var(--curve-enter);
+  }
+  .experience-card::before{
+    content:"";
+    position:absolute;
+    width:11rem;
+    height:11rem;
+    top:-5rem;
+    right:-3.5rem;
+    border-radius:999px;
+    background: color-mix(in srgb,var(--accent-soft) 62%,transparent);
+    filter: blur(16px);
+    opacity:.64;
+    pointer-events:none;
+  }
+  .experience-card > *{ position:relative; z-index:1 }
+  .experience-card:hover{
+    transform: translateY(-5px);
+    border-color:color-mix(in srgb,var(--accent) 66%,var(--line));
+    box-shadow:0 20px 36px color-mix(in srgb, rgba(0,0,0,0.2) 84%,transparent), inset 0 1px 0 color-mix(in srgb,var(--accent-soft) 62%,transparent);
+  }
+  .experience-card h3{
+    margin:0;
+    font-family:"Sora","Manrope",sans-serif;
+    font-size:clamp(1.35rem,2.3vw,2.1rem);
+    letter-spacing:-0.02em;
+    line-height:1.12;
+    color:var(--text-strong);
+  }
+  .experience-org{
+    margin:.4rem 0 0;
+    font-size:clamp(1.02rem,1.45vw,1.26rem);
+    font-weight:700;
+    color:var(--accent-strong);
+  }
+  .experience-meta{
+    margin:.85rem 0 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.55rem;
+  }
+  .experience-meta span{
+    display:inline-flex;
+    align-items:center;
+    border-radius:999px;
+    border:1px solid color-mix(in srgb,var(--accent) 38%,var(--line));
+    background: color-mix(in srgb,var(--accent-soft) 72%,transparent);
+    color:color-mix(in srgb,var(--text-muted) 88%,var(--text-strong));
+    font-size:.86rem;
+    font-weight:650;
+    line-height:1;
+    padding:.45rem .72rem;
+  }
+  .experience-points{
+    margin:1rem 0 0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:.62rem;
+  }
+  .experience-points li{
+    margin:0;
+    padding-left:1.02rem;
+    position:relative;
+    font-size:clamp(.95rem,1.2vw,1.08rem);
+    line-height:1.55;
+    color:color-mix(in srgb,var(--text-muted) 90%,var(--text-strong));
+  }
+  .experience-points li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.58em;
+    width:.38rem;
+    height:.38rem;
+    border-radius:999px;
+    background:color-mix(in srgb,var(--accent) 82%,transparent);
+    box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-soft) 58%,transparent);
+  }
 
   /* Projects */
   .projects-section{ padding:clamp(2.1rem,5vw,3.6rem) 0 }
@@ -722,6 +867,14 @@
     .hero-copy { max-width:42ch }
     .about-heading { max-width:14ch }
     .about-stats { grid-template-columns: 1fr }
+    .experience-spine{ left:.7rem }
+    .experience-item{ padding-left:2.35rem }
+    .experience-node{ left:.3rem; top:1.58rem; width:.82rem; height:.82rem; box-shadow:0 0 0 4px color-mix(in srgb,var(--accent-soft) 70%,transparent) }
+    .experience-card{ border-radius:1rem; padding:1.02rem .86rem .9rem }
+    .experience-card h3{ font-size:1.08rem }
+    .experience-org{ font-size:.93rem }
+    .experience-meta span{ font-size:.75rem; padding:.38rem .56rem }
+    .experience-points li{ font-size:.9rem; line-height:1.45 }
     .projects-grid { grid-template-columns: 1fr }
     .skills-marquee { mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent) }
     .project-card-description { min-height:0 }

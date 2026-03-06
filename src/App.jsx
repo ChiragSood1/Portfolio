@@ -4,6 +4,7 @@ import { HeroSpotlight } from "./sections/HeroSpotlight.jsx";
 import { TopNavigation } from "./sections/TopNavigation.jsx";
 import { useEffect, useState } from "react";
 import AboutSection from "./components/AboutSection.jsx";
+import ExperienceSection from "./components/ExperienceSection.jsx";
 import ProjectsSection from "./components/ProjectsSection.jsx";
 import SkillsSection from "./components/SkillsSection.jsx";
 import Education from "./components/Education.jsx";
@@ -76,7 +77,7 @@ function App() {
         <main className="site-main">
           <HeroSpotlight />
           <AboutSection />
-          {/* Experience section removed */}
+          <ExperienceSection />
           <ProjectsSection />
           <SkillsSection />
           <Education />
